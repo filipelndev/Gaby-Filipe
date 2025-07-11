@@ -10,9 +10,10 @@
       text-align: center;
       padding: 50px;
       color: #ff1493;
-      overflow: hidden; /* Para evitar barras de rolagem se os corações saírem da tela */
-      position: relative; /* Para posicionar os corações */
+      overflow-x: hidden;
+      overflow-y: auto;
     }
+
     h1 {
       font-size: 3em;
     }
@@ -31,78 +32,23 @@
       color: #ff69b4;
     }
 
-    /* Estilos para os corações flutuantes */
-    .heart {
-      position: absolute;
-      background-color: #ff69b4; /* Cor dos corações */
-      transform: rotate(-45deg);
-      animation: floatHeart 10s infinite ease-in-out; /* Animação de flutuação */
-      opacity: 0; /* Começa invisível */
-      z-index: -1; /* Para ficar atrás do conteúdo */
-    }
-    .heart:before,
-    .heart:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: #ff69b4;
-      border-radius: 50%;
-    }
-    .heart:before {
-      top: -50%;
-      left: 0;
-    }
-    .heart:after {
-      top: 0;
-      left: 50%;
-    }
-
-    /* Animação de flutuação dos corações */
-    @keyframes floatHeart {
-      0% {
-        transform: translateY(0) rotate(-45deg) scale(0);
-        opacity: 0;
-      }
-      20% {
-        opacity: 0.8;
-        transform: translateY(-20%) rotate(-45deg) scale(1);
-      }
-      80% {
-        opacity: 0.8;
-        transform: translateY(-80%) rotate(-45deg) scale(1);
-      }
-      100% {
-        transform: translateY(-100%) rotate(-45deg) scale(0);
-        opacity: 0;
-      }
-    }
-
-    /* Estilo para o emoji da aliança */
     .emoji-alianca {
-      font-size: 5em; /* Tamanho do emoji da aliança */
+      font-size: 5em;
       margin-top: 30px;
-      display: inline-block; /* Para aplicar a animação de pulsação */
-      animation: pulse 1.5s infinite ease-in-out; /* Animação de pulsação */
+      display: inline-block;
+      animation: pulse 1.5s infinite ease-in-out;
     }
 
-    /* Animação de pulsação para a aliança */
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-      100% {
-        transform: scale(1);
-      }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
-    /* Estilos para os botões de resposta */
     .botoes-resposta {
       margin-top: 30px;
     }
+
     .botoes-resposta button {
       background-color: #ff69b4;
       color: white;
@@ -114,18 +60,28 @@
       margin: 0 10px;
       transition: background-color 0.3s ease;
     }
+
     .botoes-resposta button:hover {
       background-color: #ff1493;
     }
+
     .mensagem-resposta {
       margin-top: 30px;
       font-size: 1.4em;
       font-weight: bold;
       color: #ff1493;
     }
+
+    /* Coração animado */
+    .coracao-central {
+      width: 150px;
+      margin: 40px auto 0;
+      display: block;
+    }
   </style>
 </head>
 <body>
+
   <audio autoplay loop>
     <source src="cancao.mp3" type="audio/mpeg">
     Seu navegador não suporta a tag de áudio.
@@ -135,58 +91,38 @@
   <p>Antes mesmo de te encontrar pessoalmente, já te amo com uma intensidade que desafia qualquer lógica.</p>
   <p>Você chegou como quem não quer nada... e de repente virou tudo. Com você, eu vejo futuro, família, dias ensolarados em Coqueiral e noites risonhas em qualquer lugar.</p>
   <p>Essa página é só uma pequena janela do que mora aqui dentro: você.</p>
-  <div class="pedido">E agora, diante de todo esse sentimento, eu te pergunto com todo meu coração:<br><br>
-  💖 Quer namorar comigo? 💖</div>
 
+  <!-- Coração Animado -->
+  <img src="coracao-pulsante.gif" alt="Coração Pulsante" class="coracao-central">
+
+  <!-- Pedido de Namoro -->
+  <div class="pedido">
+    E agora, diante de todo esse sentimento, eu te pergunto com todo meu coração:<br><br>
+    💖 Quer namorar comigo? 💖
+  </div>
+
+  <!-- Aliança Pulsante -->
   <span class="emoji-alianca">💍</span>
 
+  <!-- Botões de Resposta -->
   <div class="botoes-resposta">
     <button onclick="responder('sim')">SIM! Eu quero!</button>
     <button onclick="responder('nao')">Não (Brincadeira!)</button>
   </div>
 
   <p id="respostaMensagem" class="mensagem-resposta"></p>
-  
+
   <p class="assinatura">Com todo o meu amor, — Filipe</p>
 
   <script>
-    // Função para criar e animar corações
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      document.body.appendChild(heart);
-
-      // Posição inicial aleatória na parte inferior da tela
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.bottom = '-10px'; // Começa um pouco abaixo da tela
-
-      // Tamanho aleatório
-      const size = Math.random() * 20 + 10 + 'px'; // Corações entre 10px e 30px
-      heart.style.width = size;
-      heart.style.height = size;
-
-      // Duração da animação aleatória para parecer mais natural
-      heart.style.animationDuration = Math.random() * 5 + 5 + 's'; // Entre 5s e 10s
-      heart.style.animationDelay = Math.random() * 2 + 's'; // Atraso para aparecerem em momentos diferentes
-
-      // Remover o coração após a animação para não sobrecarregar o DOM
-      heart.addEventListener('animationend', () => {
-        heart.remove();
-      });
-    }
-
-    // Gerar corações continuamente
-    setInterval(createHeart, 300); // Cria um novo coração a cada 300ms
-
-    // Função para os botões de resposta
     function responder(resposta) {
       const mensagemDiv = document.getElementById('respostaMensagem');
       if (resposta === 'sim') {
         mensagemDiv.innerHTML = "🎉 AH QUE LINDO! Eu sabia! Mal posso esperar para viver tudo isso com você! 🎉";
-        mensagemDiv.style.color = '#32cd32'; // Verde
+        mensagemDiv.style.color = '#32cd32';
       } else {
         mensagemDiv.innerHTML = "Haha, que engraçadinha! Tenho certeza que você vai dizer SIM! 😉";
-        mensagemDiv.style.color = '#ff4500'; // Laranja avermelhado
+        mensagemDiv.style.color = '#ff4500';
       }
     }
   </script>
