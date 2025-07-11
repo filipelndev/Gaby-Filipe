@@ -10,33 +10,41 @@
       text-align: center;
       padding: 50px;
       color: #ff1493;
-      overflow-x: hidden;
-      overflow-y: auto;
+      overflow: hidden;
     }
 
     h1 {
-      font-size: 3em;
+      font-size: 2.8em;
+      margin-bottom: 30px;
     }
+
     p {
-      font-size: 1.4em;
-      margin: 20px 0;
+      font-size: 1.3em;
+      margin: 15px 0;
     }
-    .assinatura {
-      font-style: italic;
-      margin-top: 40px;
-    }
+
     .pedido {
-      margin-top: 60px;
+      margin-top: 50px;
       font-size: 1.6em;
       font-weight: bold;
       color: #ff69b4;
     }
 
     .emoji-alianca {
-      font-size: 5em;
-      margin-top: 30px;
-      display: inline-block;
+      font-size: 4em;
+      margin-top: 25px;
       animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    .assinatura {
+      font-style: italic;
+      margin-top: 30px;
+    }
+
+    .coracao-central {
+      width: 140px;
+      margin: 40px auto 0;
+      display: block;
     }
 
     @keyframes pulse {
@@ -44,87 +52,32 @@
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
-
-    .botoes-resposta {
-      margin-top: 30px;
-    }
-
-    .botoes-resposta button {
-      background-color: #ff69b4;
-      color: white;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 25px;
-      font-size: 1.2em;
-      cursor: pointer;
-      margin: 0 10px;
-      transition: background-color 0.3s ease;
-    }
-
-    .botoes-resposta button:hover {
-      background-color: #ff1493;
-    }
-
-    .mensagem-resposta {
-      margin-top: 30px;
-      font-size: 1.4em;
-      font-weight: bold;
-      color: #ff1493;
-    }
-
-    /* Coração animado */
-    .coracao-central {
-      width: 150px;
-      margin: 40px auto 0;
-      display: block;
-    }
   </style>
 </head>
 <body>
 
+  <!-- Música ambiente -->
   <audio autoplay loop>
     <source src="cancao.mp3" type="audio/mpeg">
     Seu navegador não suporta a tag de áudio.
   </audio>
 
   <h1>🌺 Uma Página Só Pra Você 🌺</h1>
-  <p>Antes mesmo de te encontrar pessoalmente, já te amo com uma intensidade que desafia qualquer lógica.</p>
-  <p>Você chegou como quem não quer nada... e de repente virou tudo. Com você, eu vejo futuro, família, dias ensolarados em Coqueiral e noites risonhas em qualquer lugar.</p>
-  <p>Essa página é só uma pequena janela do que mora aqui dentro: você.</p>
 
-  <!-- Coração Animado -->
+  <p>Antes mesmo de te encontrar pessoalmente, já te amo com uma intensidade que desafia qualquer lógica.</p>
+  <p>Você chegou como quem não quer nada... e de repente virou tudo.</p>
+  <p>Com você, eu vejo futuro, família, dias ensolarados em Coqueiral e noites risonhas em qualquer lugar.</p>
+
+  <!-- Coração animado -->
   <img src="coracao-pulsante.gif" alt="Coração Pulsante" class="coracao-central">
 
-  <!-- Pedido de Namoro -->
-  <div class="pedido">
-    E agora, diante de todo esse sentimento, eu te pergunto com todo meu coração:<br><br>
-    💖 Quer namorar comigo? 💖
-  </div>
+  <!-- Pedido de namoro -->
+  <div class="pedido">💖 Quer namorar comigo? 💖</div>
 
-  <!-- Aliança Pulsante -->
+  <!-- Aliança -->
   <span class="emoji-alianca">💍</span>
-
-  <!-- Botões de Resposta -->
-  <div class="botoes-resposta">
-    <button onclick="responder('sim')">SIM! Eu quero!</button>
-    <button onclick="responder('nao')">Não (Brincadeira!)</button>
-  </div>
-
-  <p id="respostaMensagem" class="mensagem-resposta"></p>
 
   <p class="assinatura">Com todo o meu amor, — Filipe</p>
 
-  <script>
-    function responder(resposta) {
-      const mensagemDiv = document.getElementById('respostaMensagem');
-      if (resposta === 'sim') {
-        mensagemDiv.innerHTML = "🎉 AH QUE LINDO! Eu sabia! Mal posso esperar para viver tudo isso com você! 🎉";
-        mensagemDiv.style.color = '#32cd32';
-      } else {
-        mensagemDiv.innerHTML = "Haha, que engraçadinha! Tenho certeza que você vai dizer SIM! 😉";
-        mensagemDiv.style.color = '#ff4500';
-      }
-    }
-  </script>
 </body>
 </html>
