@@ -13,21 +13,29 @@
       overflow: hidden;
     }
 
-    h1 {
-      font-size: 2.8em;
-      margin-bottom: 30px;
+    .conteudo {
+      display: none; /* Esconde a mensagem até o clique */
+      animation: fadeIn 2s ease-in-out;
     }
 
-    p {
-      font-size: 1.3em;
-      margin: 15px 0;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .pedido {
-      margin-top: 50px;
-      font-size: 1.6em;
-      font-weight: bold;
-      color: #ff69b4;
+    .botao-revelar {
+      background-color: #ff69b4;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.4em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .botao-revelar:hover {
+      background-color: #ff1493;
     }
 
     .emoji-alianca {
@@ -36,46 +44,59 @@
       animation: pulse 1.5s infinite ease-in-out;
     }
 
-    .assinatura {
-      font-style: italic;
-      margin-top: 30px;
-    }
-
-    .coracao-central {
-      width: 140px;
-      margin: 40px auto 0;
-      display: block;
-    }
-
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
+
+    .coracao-central {
+      width: 140px;
+      margin: 30px auto 20px;
+      display: block;
+    }
+
+    .assinatura {
+      font-style: italic;
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Música ambiente -->
-  <audio id="musica" autoplay loop>
-  <source src="cancao.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio.
-</audio>
+  <!-- Áudio escondido -->
+  <audio id="musica" loop>
+    <source src="cancao.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
 
-  <h1>🌺 Uma Página Só Pra Você 🌺</h1>
+  <!-- Botão para iniciar tudo -->
+  <button class="botao-revelar" onclick="mostrarMensagem()">💗 Clique para ver a surpresa 💗</button>
 
-  <p>Antes mesmo de te encontrar pessoalmente, já te amo com uma intensidade que desafia qualquer lógica.</p>
-  <p>Você chegou como quem não quer nada... e de repente virou tudo.</p>
-  <p>Com você, eu vejo futuro, família, dias ensolarados em Coqueiral e noites risonhas em qualquer lugar.</p>
-  <p>Essa página é só uma pequena janela do que mora aqui dentro: você.</p>
+  <!-- Conteúdo revelado -->
+  <div class="conteudo" id="mensagem">
+    <h1>🌺 Uma Página Só Pra Você 🌺</h1>
+    <p>Antes mesmo de te encontrar pessoalmente, já te amo com uma intensidade que desafia qualquer lógica.</p>
+    <p>Você chegou como quem não quer nada... e de repente virou tudo.</p>
+    <p>Com você, eu vejo futuro, família, dias ensolarados em Coqueiral e noites risonhas em qualquer lugar.</p>
 
-  <!-- Pedido de namoro -->
-  <div class="pedido">💖 Quer namorar comigo? 💖</div>
+    <img src="coracao-pulsante.gif" alt="Coração Pulsante" class="coracao-central">
 
-  <!-- Aliança -->
-  <span class="emoji-alianca">💍</span>
+    <div class="pedido">💖 Quer namorar comigo? 💖</div>
 
-  <p class="assinatura">Com todo o meu amor, — Filipe</p>
+    <span class="emoji-alianca">💍</span>
 
+    <p class="assinatura">Com todo o meu amor, — Filipe</p>
+  </div>
+
+  <script>
+    function mostrarMensagem() {
+      document.getElementById('mensagem').style.display = 'block';
+      const musica = document.getElementById('musica');
+      musica.play().catch(() => {
+        console.log("Clique necessário para iniciar áudio.");
+      });
+    }
+  </script>
 </body>
 </html>
