@@ -13,7 +13,7 @@
       overflow: hidden;
     }
 
-    .conteudo {
+    .conteudo, .carrossel {
       display: none;
       animation: fadeIn 2s ease-in-out;
     }
@@ -38,79 +38,67 @@
       background-color: #ff1493;
     }
 
-    .emoji-alianca {
-      font-size: 4em;
-      margin-top: 25px;
-      animation: pulse 1.5s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-
-    .coracao-central {
-      width: 140px;
-      margin: 30px auto 20px;
-      display: block;
-    }
-
     .assinatura {
       font-style: italic;
       margin-top: 30px;
     }
 
-    .pedido {
-      font-size: 1.8em;
-      margin-top: 20px;
-      font-weight: bold;
+    .legenda {
+      font-style: italic;
+      color: #c71585;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Áudio escondido -->
   <audio id="musica" loop>
     <source src="Ed_Sheeran_-_Photograph_(BornMP3.com).mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
 
-  <!-- Botão para iniciar tudo -->
   <button class="botao-revelar" onclick="mostrarMensagem()">💗 Clique para ver a surpresa 💗</button>
 
-  <!-- Conteúdo revelado -->
-<div class="conteudo" id="mensagem">
-  <h1>💖 Um Amor Que Me Leva ao Altar 💖</h1>
+  <div class="conteudo" id="mensagem">
+    <h1>🌌 Amor que fica, mesmo depois que o fim de semana passa 🌌</h1>
 
-  <p>Meu amor, cada vez que fecho os olhos, te vejo — de branco, sorrindo, caminhando na minha direção. O altar que habita meus sonhos não é apenas um lugar: é promessa, é destino, é o início da nossa eternidade.</p>
+    <p>Meu amor, desde que nos despedimos, parece que as horas desaceleraram — como se o tempo quisesse me deixar mais tempo nas lembranças do nosso fim de semana mágico.</p>
 
-  <p>Hoje, a saudade aperta o peito e se mistura com a ansiedade boa de te rever. Porque amanhã não é apenas mais um dia… É o dia que chega mais perto do nosso “para sempre”.</p>
+    <p>Sinto saudades do teu riso solto, da tua mão entrelaçada na minha, do abraço que parecia conter o universo. Nossa cumplicidade pintou os dias com cores que nenhum artista jamais sonhou.</p>
 
-  <p>Estou contando as horas para te abraçar, te beijar, te sentir perto. Dormir ao teu lado e acordar com teu sorriso será o meu maior presente.</p>
+    <p>Estar contigo me faz acreditar que o amor é uma casa onde descanso a alma, e contigo quero viver — não só os fins de semana, mas todos os ciclos da vida.</p>
 
-  <p>Conhecer tua família será um capítulo importante da nossa história. Cada rosto, cada gesto, será uma bênção que acolhe o amor que construímos com tanto carinho e fé.</p>
+    <p>O amanhã me espera com ansiedade no peito: quero te rever, te acolher, conhecer cada cantinho da tua história, da tua família, do mundo que te formou. Te amar mais fundo, mais inteiro.</p>
 
-  <p>Te amo profundamente, intensamente, eternamente. E quero viver cada momento contigo: desde o café compartilhado até os sonhos que florescem na madrugada.</p>
+    <p>Quero dormir contigo e acordar sabendo que sou amado, abraçar teu corpo como quem abraça a vida e te beijar como quem firma um pacto eterno.</p>
 
-  <p>Você é meu caminho, minha verdade, meu lar. E eu espero com todo o meu ser por aquele instante mágico — quando direi “sim” diante do mundo, e dos olhos mais lindos que já vi.</p>
+    <p>Nosso fim de semana foi o prólogo. Meu coração escreve os próximos capítulos com fé, ternura e o nome mais bonito que ele conhece: o teu.</p>
 
-  <p class="assinatura">Com o coração batendo forte pelo amanhã, — Filipe 💍</p>
-</div>
-  <div class="imagem">
-    <img src="amor3.jpg" alt="Foto de nós dois" style="max-width: 100%; border-radius: 10px; margin-top: 20px;">
-    <p class="legenda">“Onde quer que estejamos, essa imagem me lembra que nosso amor floresce mesmo na saudade.”</p>
+    <p class="assinatura">Com amor que atravessa os dias, e saudade que acende estrelas — Filipe 💌</p>
   </div>
-</div>
+
+  <div class="carrossel">
+    <img id="slide" src="amor1.jpg" alt="Foto de nós dois" style="max-width: 100%; border-radius: 10px; margin-top: 20px;">
+    <p class="legenda">“Cada imagem é um verso do poema que escrevemos juntos.”</p>
+  </div>
 
   <script>
     function mostrarMensagem() {
       document.getElementById('mensagem').style.display = 'block';
+      document.querySelector('.carrossel').style.display = 'block';
       const musica = document.getElementById('musica');
       musica.play().catch(() => {
         console.log("Clique necessário para iniciar áudio.");
       });
     }
+
+    const imagens = ['amor.jpg', 'amor1.jpg', 'amor2.jpg', 'amor3.jpg', 'amor4.jpg', 'amor5.jpg', 'amor6.jpg', 'amor7.jpg', 'amor8.jpg', 'amor9.jpg', 'amor10.jpg', 'amor11.jpg'];
+    let atual = 0;
+
+    setInterval(() => {
+      atual = (atual + 1) % imagens.length;
+      document.getElementById('slide').src = imagens[atual];
+    }, 3000);
   </script>
 </body>
 </html>
