@@ -48,6 +48,54 @@
       color: #c71585;
       margin-top: 10px;
     }
+    
+    .coracao {
+    position: fixed;
+    top: -50px;
+    font-size: 2em;
+    animation: cair 7s linear infinite;
+    color: #ff69b4;
+  }
+
+  @keyframes cair {
+    to {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+    .petala {
+    position: fixed;
+    top: -30px;
+    font-size: 1.5em;
+    color: #ffb6c1;
+    animation: cairPetala 8s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes cairPetala {
+  to {
+    transform: translateY(100vh) rotate(540deg);
+  }
+}
+    
+  @media (max-width: 600px) {
+  #abelhinha {
+    width: 30px;
+    height: 30px;
+  }
+
+  .botao-revelar {
+    padding: 12px 24px;
+    font-size: 1.2em;
+  }
+
+  .conteudo {
+    padding: 20px;
+  }
+
+  img#slide {
+    max-width: 95%;
+  }
+}
   </style>
 </head>
 <body>
@@ -59,22 +107,28 @@
 
   <button class="botao-revelar" onclick="mostrarMensagem()">💗 Clique para ver a surpresa 💗</button>
 
+  <svg id="abelhinha" width="40" height="40" style="position: fixed; top: 100px; left: 50px; z-index: 999;">
+  <text x="0" y="30" font-size="30">🐝</text>
+</svg>
+  
   <div class="conteudo" id="mensagem">
-    <h1>🌌 Amor que fica, mesmo depois que o fim de semana passa 🌌</h1>
+   <h1>🌻 Amor com asas e raízes: nosso doce voo até dezembro 🌻</h1>
 
-    <p>Meu amor, desde que nos despedimos, parece que as horas desaceleraram — como se o tempo quisesse me deixar mais tempo nas lembranças do nosso fim de semana mágico.</p>
+<p>Meu amor, minha perfeitinha, minha abelhinha... os dias passam com a lentidão das manhãs, e cada um deles traz mais saudade do teu sorriso e do som do nosso sonho crescendo.</p>
 
-    <p>Sinto saudades do teu riso solto, da tua mão entrelaçada na minha, do abraço que parecia conter o universo. Nossa cumplicidade pintou os dias com cores que nenhum artista jamais sonhou.</p>
+<p>Desde que mergulhamos na meliponicultura, aprendi que o amor também é feito em silêncio, em paciência, em colmeias construídas com cuidado e fé. O nosso está sendo esculpido como mel: lento, profundo e cheio de doçura.</p>
 
-    <p>Estar contigo me faz acreditar que o amor é uma casa onde descanso a alma, e contigo quero viver — não só os fins de semana, mas todos os ciclos da vida.</p>
+<p>Sonho com nossa fazenda cheia de vida — com abelhas jataí zumbindo ao redor das flores e nossa filha, Maria Cecília, correndo entre as árvores com os olhos cheios de céu e esperança.</p>
 
-    <p>O amanhã me espera com ansiedade no peito: quero te rever, te acolher, conhecer cada cantinho da tua história, da tua família, do mundo que te formou. Te amar mais fundo, mais inteiro.</p>
+<p>O dia 02 de dezembro não é só uma data: é a porta do nosso lar, onde te encontrarei no altar como quem reencontra o próprio destino. E ali, com o coração polinizado de amor, prometerei amar-te como quem cuida de um apiário — todos os dias, com olhos atentos e alma entregue.</p>
 
-    <p>Quero dormir contigo e acordar sabendo que sou amado, abraçar teu corpo como quem abraça a vida e te beijar como quem firma um pacto eterno.</p>
+<p>Enquanto esse dia não chega, te escrevo com mãos cheias de saudade e peito transbordando futuro. Que essa página seja nosso jardim digital, onde cada letra é uma flor e cada vírgula, um voo a mais rumo a ti.</p>
 
-    <p>Nosso fim de semana foi o prólogo. Meu coração escreve os próximos capítulos com fé, ternura e o nome mais bonito que ele conhece: o teu.</p>
+<p class="assinatura">Com ternura que vibra como asas, e amor doce como mel — Filipe 💌</p>
 
-    <p class="assinatura">Com amor que atravessa os dias, e saudade que acende estrelas — Filipe 💌</p>
+    <p style="margin-top: 20px; font-weight: bold; color: #c71585;">
+  💍 Faltam <span id="contador"></span> dias para o nosso voo nupcial: 02 de dezembro 💍
+</p>
   </div>
 
   <div class="carrossel">
@@ -100,5 +154,61 @@
       document.getElementById('slide').src = imagens[atual];
     }, 3000);
   </script>
+  
+  <script>
+  function criarCoracoes() {
+    const coracao = document.createElement('div');
+    coracao.classList.add('coracao');
+    coracao.innerHTML = '💗';
+    coracao.style.left = Math.random() * window.innerWidth + 'px';
+    document.body.appendChild(coracao);
+
+    setTimeout(() => coracao.remove(), 7000);
+  }
+
+  setInterval(criarCoracoes, 500);
+</script>
+  
+  <script>
+  function criarPetalas() {
+    const petala = document.createElement('div');
+    petala.classList.add('petala');
+    petala.innerHTML = '🌸';
+    petala.style.left = Math.random() * window.innerWidth + 'px';
+    document.body.appendChild(petala);
+
+    setTimeout(() => petala.remove(), 8000);
+  }
+
+  setInterval(criarPetalas, 600);
+</script>
+
+  <script>
+  const abelha = document.getElementById('abelhinha');
+  let posX = Math.random() * window.innerWidth;
+  let posY = Math.random() * window.innerHeight / 2;
+  let sentidoX = 1;
+  let sentidoY = 1;
+
+  setInterval(() => {
+    posX += sentidoX * (Math.random() * 3);
+    posY += sentidoY * (Math.random() * 1.5);
+
+    // Reverter direção quando atingir bordas
+    if (posX > window.innerWidth - 50 || posX < 0) sentidoX *= -1;
+    if (posY > window.innerHeight - 100 || posY < 0) sentidoY *= -1;
+
+    abelha.style.left = posX + 'px';
+    abelha.style.top = posY + 'px';
+  }, 40);
+</script>
+
+  <script>
+  const hoje = new Date();
+  const casamento = new Date('2025-12-02T00:00:00');
+  const dias = Math.ceil((casamento - hoje) / (1000 * 60 * 60 * 24));
+  document.getElementById('contador').innerText = dias;
+</script>
+  
 </body>
 </html>
