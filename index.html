@@ -132,7 +132,7 @@
 .frase {
   position: fixed;
   font-size: 1em;
-  color: #ffffff; /* Agora branca */
+  color: black;
   opacity: 0;
   animation: flutuarFrase 6s ease-in-out forwards;
   pointer-events: none;
@@ -315,16 +315,6 @@
     coracao.style.left = Math.random() * window.innerWidth + 'px';
     document.body.appendChild(coracao);
     setTimeout(() => coracao.remove(), 7000);
-  }
-
-  // 🌸 Pétalas
-  function criarPetalas() {
-    const petala = document.createElement('div');
-    petala.classList.add('petala');
-    petala.innerHTML = '🌸';
-    petala.style.left = Math.random() * window.innerWidth + 'px';
-    document.body.appendChild(petala);
-    setTimeout(() => petala.remove(), 8000);
   }
 
   // 💖 Revela mensagem e inicia efeitos
