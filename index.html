@@ -62,20 +62,25 @@
       transform: translateY(100vh) rotate(360deg);
     }
   }
-    .petala {
-    position: fixed;
-    top: -30px;
-    font-size: 1.5em;
-    color: #ffb6c1;
-    animation: cairPetala 8s linear infinite;
-    pointer-events: none;
-  }
+    .flor {
+  position: fixed;
+  top: -30px;
+  font-size: 1.5em;
+  animation: cairFlor 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
 
-  @keyframes cairPetala {
+.flor.vermelha { color: #ff4d4d; }
+.flor.azul { color: #4da6ff; }
+.flor.verde { color: #47d147; }
+
+@keyframes cairFlor {
   to {
     transform: translateY(100vh) rotate(540deg);
   }
 }
+
     
   @media (max-width: 600px) {
   #abelhinha {
@@ -108,13 +113,14 @@
   transition: background 2s ease-in-out;
 }
 
-    .estrela {
+.estrela {
   position: fixed;
-  width: 5px;
-  height: 5px;
-  background-color: #8ecae6;
+  width: calc(8px + 7 * var(--tamanho));
+  height: calc(8px + 7 * var(--tamanho));
+  background-color: var(--cor);
   border-radius: 50%;
   animation: piscar 2s infinite;
+  box-shadow: 0 0 8px var(--cor);
   pointer-events: none;
   z-index: 0;
 }
@@ -126,7 +132,7 @@
 .frase {
   position: fixed;
   font-size: 1em;
-  color: #ff69b4;
+  color: #ffffff; /* Agora branca */
   opacity: 0;
   animation: flutuarFrase 6s ease-in-out forwards;
   pointer-events: none;
@@ -138,6 +144,34 @@
   20% { opacity: 1; }
   80% { opacity: 1; transform: translateY(-30px); }
   100% { opacity: 0; }
+}
+
+    .coracao, .petala {
+  opacity: 0;
+  animation: surgir 1s ease-in-out forwards, cair 7s linear infinite;
+}
+
+@keyframes surgir {
+  to { opacity: 1; }
+}
+
+      .bolha {
+  position: fixed;
+  bottom: -50px;
+  width: var(--tamanho);
+  height: var(--tamanho);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: subir 10s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes subir {
+  to {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
 }
   </style>
 </head>
@@ -159,30 +193,32 @@
   </audio>
 
   <button class="botao-revelar" onclick="mostrarMensagem()">💗 Clique para ver a surpresa 💗</button>
-
-  <svg id="abelhinha" width="40" height="40" style="position: fixed; top: 100px; left: 50px; z-index: 999;">
-  <text x="0" y="30" font-size="30">🐝</text>
-</svg>
   
   <div class="conteudo" id="mensagem">
-   <h1>💐 Mesmo nas nuvens, o sol do nosso amor continua brilhando 💐</h1>
+   <h1>🌹 Porque te amo, e isso é tudo 🌹</h1>
 
-<p>Meu amor, sei que hoje o dia está pesado — mas quero que essa página seja teu refúgio, teu colo, teu lembrete: você não está sozinha. Eu tô aqui. Sempre.</p>
+  <p>Meu amor,</p>
 
-<p>Nosso amor não se dobra com o vento, não se apaga na dúvida, não recua com o medo. Ele é firme, forte e doce... como as abelhas que nos ensinaram que a construção mais bela é feita em silêncio e em parceria.</p>
+  <p>Hoje, mais uma vez, acordei com o coração apertado. Cada segundo longe de você se estende como um suspiro que não termina, como um verso que não encontra rima — porque você é minha poesia, e sem você, sou só silêncio.</p>
 
-<p>Vamos fazer nossa fazenda, vamos rir no meio das árvores, vamos ensinar Maria Cecília a caminhar com os pés na terra e o coração entre as flores. Nada nos tira isso, nem o tempo, nem os tropeços, nem os dias nublados.</p>
+  <p>Eu te amo do fundo do meu coração. Mas amor assim não vive só na superfície das palavras. Ele mergulha fundo, atravessa tempestades, se enraíza onde só a saudade alcança. Às vezes tento explicar o tamanho disso, mas percebo que até as estrelas ficariam pequenas se tentassem iluminar tudo que sinto.</p>
 
-<p>O dia 02 de dezembro vem chegando, meu bem. Eu estarei lá. Com os olhos brilhando só de ver você chegando como quem carrega a própria luz. E vou te dizer o que já é verdade: que sou teu, e você é minha, para sempre.</p>
+  <p>A saudade que tenho de você... ah, amor, é cruel como o tempo quando se arrasta. Cada dia longe de ti é uma tortura gentil, um corte feito de lembranças boas que doem só porque não estão aqui, agora. Sinto tua ausência como quem sente frio em pleno verão — porque mesmo com o mundo brilhando lá fora, falta o teu calor.</p>
 
-<p>Por mais difícil que o mundo pareça hoje, ele se curva diante do nosso amor. Nós somos a certeza, o lar, o futuro que já pulsa no presente.</p>
+  <p>Imagino teu sorriso, e é como se o mundo tivesse cor de novo. Fecho os olhos e vejo tuas mãos, e isso basta pra eu acreditar que ainda existe mágica. Mas a verdade é que minha alma quer teu toque, meu corpo quer teu abraço, minha vida quer teu cheiro espalhado em cada canto do meu dia.</p>
 
-<p class="assinatura">Te amo infinitamente. E nada muda isso. — Filipe 💗
+  <p>Eu conto os dias, as horas, os minutos. Não só para te ver, mas para me reencontrar. Porque, quando estou longe, sinto que uma parte de mim ficou aí contigo — e é exatamente essa parte que me faz falta todos os dias. Você é meu lar, e sem você, o mundo vira estrada sem destino.</p>
 
-    <p style="margin-top: 20px; font-weight: bold; color: #c71585;">
-  💍 Faltam <span id="contador"></span> dias para o nosso voo nupcial: 02 de dezembro 💍
+  <p>Não vejo a hora de te encontrar de novo, de viver o abraço que venho sonhando acordado. O momento em que meus olhos vão dizer tudo sem falar, e tua presença vai finalmente silenciar essa dor. A espera tem fim, eu sei. E quando chegar, tudo isso vai valer a pena. Porque te amar é minha certeza — e estar contigo é o único lugar onde tudo faz sentido.</p>
+
+  <p>Te amo mais do que qualquer palavra possa alcançar. E enquanto o tempo insiste em nos separar, meu amor continua crescendo, forte, firme, lindo... como quem sabe que em breve, enfim, estaremos de novo onde sempre pertencemos: um no outro.</p>
+
+  <p class="assinatura">Com tudo que tenho e sou, — Filipe 💗</p>
+</div>
+    <p style="margin-top: 20px; font-weight: bold; color: #c71585; font-size: 1.1em;">
+  💍 Nosso voo nupcial de amor decola em <span id="contador"></span> dias... <br>
+  E cada dia é uma contagem de saudade, sonho e certeza: 02 de dezembro 💍
 </p>
-  </div>
 
   <div class="carrossel">
     <img id="slide" src="amor1.jpg" alt="Foto de nós dois">
@@ -192,13 +228,25 @@
   <script>
   // 🌠 Estrelas
   function criarEstrelas() {
-    const estrela = document.createElement('div');
-    estrela.classList.add('estrela');
-    estrela.style.top = Math.random() * window.innerHeight + 'px';
-    estrela.style.left = Math.random() * window.innerWidth + 'px';
-    document.body.appendChild(estrela);
-    setTimeout(() => estrela.remove(), 4000);
-  }
+  const cores = ['#8ecae6', '#ffffff', '#ffd6a5', '#cdb4db', '#a2d2ff'];
+  const estrela = document.createElement('div');
+  estrela.classList.add('estrela');
+
+  // Posição aleatória
+  estrela.style.top = Math.random() * window.innerHeight + 'px';
+  estrela.style.left = Math.random() * window.innerWidth + 'px';
+
+  // Tamanho e cor aleatórios
+  const tamanho = Math.random().toFixed(2);
+  const cor = cores[Math.floor(Math.random() * cores.length)];
+  estrela.style.setProperty('--tamanho', tamanho);
+  estrela.style.setProperty('--cor', cor);
+
+  document.body.appendChild(estrela);
+
+  // Remoção após tempo (efeito passageiro)
+  setTimeout(() => estrela.remove(), 4000);
+}
 
   // 💬 Frases flutuantes
   const frases = [
@@ -220,6 +268,42 @@
     document.body.appendChild(frase);
     setTimeout(() => frase.remove(), 6000);
   }
+
+    function criarFlores() {
+  const flor = document.createElement('div');
+  flor.classList.add('flor');
+
+  // Define cor aleatória
+  const cores = ['vermelha', 'azul', 'verde'];
+  const corEscolhida = cores[Math.floor(Math.random() * cores.length)];
+  flor.classList.add(corEscolhida);
+
+  // Escolhe o emoji
+  flor.innerHTML = '🌼';
+  flor.style.left = Math.random() * window.innerWidth + 'px';
+
+  document.body.appendChild(flor);
+  setTimeout(() => flor.remove(), 8000);
+}
+
+    function criarBolhas() {
+  for (let i = 0; i < 20; i++) {
+    const bolha = document.createElement('div');
+    bolha.classList.add('bolha');
+
+    // Tamanho aleatório
+    const tamanho = `${Math.random() * 30 + 10}px`;
+    bolha.style.setProperty('--tamanho', tamanho);
+
+    // Posição horizontal aleatória
+    bolha.style.left = `${Math.random() * 100}vw`;
+
+    document.body.appendChild(bolha);
+
+    // Remover depois de um tempo
+    setTimeout(() => bolha.remove(), 10000);
+  }
+}
 
   // 💗 Corações
   function criarCoracoes() {
@@ -247,106 +331,25 @@
     document.getElementById('mensagem').style.display = 'block';
     document.querySelector('.carrossel').style.display = 'block';
 
-    const musica = document.getElementById('musica');
-    musica.play().catch(() => {
-      console.log("Clique necessário para iniciar áudio.");
-    });
+  const abelhinha = document.createElement('div');
+abelhinha.innerHTML = `<svg id="abelhinha" width="40" height="40" style="position: fixed; top: 100px; left: 50px; z-index: 999;">
+  <text x="0" y="30" font-size="30">🐝</text>
+</svg>`;
+document.body.appendChild(abelhinha);
 
-    // 🌠 Inicia os efeitos
-    setInterval(criarEstrelas, 250);
-    setInterval(criarFrase, 4000);
-    setInterval(criarCoracoes, 500);
-    setInterval(criarPetalas, 600);
-  }
-
-  // 🖼️ Carrossel de imagens
-  const imagens = ['amor.jpg', 'amor1.jpg', 'amor2.jpg', 'amor3.jpg', 'amor4.jpg', 'amor5.jpg', 'amor6.jpg', 'amor7.jpg', 'amor8.jpg', 'amor9.jpg', 'amor10.jpg', 'amor11.jpg'];
-  let atual = 0;
-
-  setInterval(() => {
-    atual = (atual + 1) % imagens.length;
-    document.getElementById('slide').src = imagens[atual];
-  }, 3000);
-
-  // 🐝 Abelhinha animada
-  const abelha = document.getElementById('abelhinha');
-  let posX = Math.random() * window.innerWidth;
-  let posY = Math.random() * window.innerHeight / 2;
-  let sentidoX = 1;
-  let sentidoY = 1;
-
-  setInterval(() => {
-    posX += sentidoX * (Math.random() * 3);
-    posY += sentidoY * (Math.random() * 1.5);
-    if (posX > window.innerWidth - 50 || posX < 0) sentidoX *= -1;
-    if (posY > window.innerHeight - 100 || posY < 0) sentidoY *= -1;
-    abelha.style.left = posX + 'px';
-    abelha.style.top = posY + 'px';
-  }, 40);
-
-  // 📅 Contagem regressiva
-  const hoje = new Date();
-  const casamento = new Date('2025-12-02T00:00:00');
-  const dias = Math.ceil((casamento - hoje) / (1000 * 60 * 60 * 24));
-  document.getElementById('contador').innerText = dias;
-</script>
-<script>
-  // 🌠 Estrelas
-  function criarEstrelas() {
-    const estrela = document.createElement('div');
-    estrela.classList.add('estrela');
-    estrela.style.top = Math.random() * window.innerHeight + 'px';
-    estrela.style.left = Math.random() * window.innerWidth + 'px';
-    document.body.appendChild(estrela);
-    setTimeout(() => estrela.remove(), 4000);
-  }
-
-  // 💬 Frases flutuantes
-  const frases = [
-    "Você é minha paz.",
-    "O nosso amor é certeza.",
-    "Cada sonho teu vive em mim.",
-    "Vamos construir nosso lar.",
-    "Nada nos separa.",
-    "Maria Cecília já mora no meu coração.",
-    "Nosso altar está te esperando.",
-  ];
-
-  function criarFrase() {
-    const frase = document.createElement('div');
-    frase.classList.add('frase');
-    frase.textContent = frases[Math.floor(Math.random() * frases.length)];
-    frase.style.top = Math.random() * window.innerHeight + 'px';
-    frase.style.left = Math.random() * window.innerWidth + 'px';
-    document.body.appendChild(frase);
-    setTimeout(() => frase.remove(), 6000);
-  }
-
-  // 💗 Corações
-  function criarCoracoes() {
-    const coracao = document.createElement('div');
-    coracao.classList.add('coracao');
-    coracao.innerHTML = '💗';
-    coracao.style.left = Math.random() * window.innerWidth + 'px';
-    document.body.appendChild(coracao);
-    setTimeout(() => coracao.remove(), 7000);
-  }
-
-  // 🌸 Pétalas
-  function criarPetalas() {
-    const petala = document.createElement('div');
-    petala.classList.add('petala');
-    petala.innerHTML = '🌸';
-    petala.style.left = Math.random() * window.innerWidth + 'px';
-    document.body.appendChild(petala);
-    setTimeout(() => petala.remove(), 8000);
-  }
-
-  // 💖 Revela mensagem e inicia efeitos
-  function mostrarMensagem() {
-    document.body.classList.add('revelado');
-    document.getElementById('mensagem').style.display = 'block';
-    document.querySelector('.carrossel').style.display = 'block';
+const abelha = document.getElementById('abelhinha');
+let posX = Math.random() * window.innerWidth;
+let posY = Math.random() * window.innerHeight / 2;
+let sentidoX = 1;
+let sentidoY = 1;
+setInterval(() => {
+  posX += sentidoX * (Math.random() * 3);
+  posY += sentidoY * (Math.random() * 1.5);
+  if (posX > window.innerWidth - 50 || posX < 0) sentidoX *= -1;
+  if (posY > window.innerHeight - 100 || posY < 0) sentidoY *= -1;
+  abelha.style.left = posX + 'px';
+  abelha.style.top = posY + 'px';
+}, 40);
 
     const musica = document.getElementById('musica');
     musica.play().catch(() => {
@@ -357,7 +360,9 @@
     setInterval(criarEstrelas, 250);
     setInterval(criarFrase, 4000);
     setInterval(criarCoracoes, 500);
+    setInterval(criarFlores, 600);
     setInterval(criarPetalas, 600);
+    setInterval(criarBolhas, 1500);
   }
 
   // 🖼️ Carrossel de imagens
@@ -368,22 +373,6 @@
     atual = (atual + 1) % imagens.length;
     document.getElementById('slide').src = imagens[atual];
   }, 3000);
-
-  // 🐝 Abelhinha animada
-  const abelha = document.getElementById('abelhinha');
-  let posX = Math.random() * window.innerWidth;
-  let posY = Math.random() * window.innerHeight / 2;
-  let sentidoX = 1;
-  let sentidoY = 1;
-
-  setInterval(() => {
-    posX += sentidoX * (Math.random() * 3);
-    posY += sentidoY * (Math.random() * 1.5);
-    if (posX > window.innerWidth - 50 || posX < 0) sentidoX *= -1;
-    if (posY > window.innerHeight - 100 || posY < 0) sentidoY *= -1;
-    abelha.style.left = posX + 'px';
-    abelha.style.top = posY + 'px';
-  }, 40);
 
   // 📅 Contagem regressiva
   const hoje = new Date();
