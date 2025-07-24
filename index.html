@@ -103,8 +103,54 @@
   border-radius: 10px;
   margin-top: 20px;
 }
+    body.revelado {
+  background: linear-gradient(120deg, #fff0f5, #ffe4e1, #fddde6);
+  transition: background 2s ease-in-out;
+}
+
+    .estrela {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 50%;
+  animation: piscar 2s infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes piscar {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+.frase {
+  position: fixed;
+  font-size: 1em;
+  color: #ff69b4;
+  opacity: 0;
+  animation: flutuarFrase 6s ease-in-out forwards;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes flutuarFrase {
+  0% { opacity: 0; transform: translateY(0); }
+  20% { opacity: 1; }
+  80% { opacity: 1; transform: translateY(-30px); }
+  100% { opacity: 0; }
+}
   </style>
 </head>
+  <script>
+    function criarEstrelas() {
+  const estrela = document.createElement('div');
+  estrela.classList.add('estrela');
+  estrela.style.top = Math.random() * window.innerHeight + 'px';
+  estrela.style.left = Math.random() * window.innerWidth + 'px';
+  document.body.appendChild(estrela);
+  setTimeout(() => estrela.remove(), 4000);
+}
+  </script>
 <body>
 
   <audio id="musica" loop>
@@ -119,19 +165,19 @@
 </svg>
   
   <div class="conteudo" id="mensagem">
-   <h1>🌻 Amor com asas e raízes: nosso doce voo até dezembro 🌻</h1>
+   <h1>💐 Mesmo nas nuvens, o sol do nosso amor continua brilhando 💐</h1>
 
-<p>Meu amor, minha perfeitinha, minha abelhinha... os dias passam com a lentidão das manhãs, e cada um deles traz mais saudade do teu sorriso e do som do nosso sonho crescendo.</p>
+<p>Meu amor, sei que hoje o dia está pesado — mas quero que essa página seja teu refúgio, teu colo, teu lembrete: você não está sozinha. Eu tô aqui. Sempre.</p>
 
-<p>Desde que mergulhamos na meliponicultura, aprendi que o amor também é feito em silêncio, em paciência, em colmeias construídas com cuidado e fé. O nosso está sendo esculpido como mel: lento, profundo e cheio de doçura.</p>
+<p>Nosso amor não se dobra com o vento, não se apaga na dúvida, não recua com o medo. Ele é firme, forte e doce... como as abelhas que nos ensinaram que a construção mais bela é feita em silêncio e em parceria.</p>
 
-<p>Sonho com nossa fazenda cheia de vida — com abelhas jataí zumbindo ao redor das flores e nossa filha, Maria Cecília, correndo entre as árvores com os olhos cheios de céu e esperança.</p>
+<p>Vamos fazer nossa fazenda, vamos rir no meio das árvores, vamos ensinar Maria Cecília a caminhar com os pés na terra e o coração entre as flores. Nada nos tira isso, nem o tempo, nem os tropeços, nem os dias nublados.</p>
 
-<p>O dia 02 de dezembro não é só uma data: é a porta do nosso lar, onde te encontrarei no altar como quem reencontra o próprio destino. E ali, com o coração polinizado de amor, prometerei amar-te como quem cuida de um apiário — todos os dias, com olhos atentos e alma entregue.</p>
+<p>O dia 02 de dezembro vem chegando, meu bem. Eu estarei lá. Com os olhos brilhando só de ver você chegando como quem carrega a própria luz. E vou te dizer o que já é verdade: que sou teu, e você é minha, para sempre.</p>
 
-<p>Enquanto esse dia não chega, te escrevo com mãos cheias de saudade e peito transbordando futuro. Que essa página seja nosso jardim digital, onde cada letra é uma flor e cada vírgula, um voo a mais rumo a ti.</p>
+<p>Por mais difícil que o mundo pareça hoje, ele se curva diante do nosso amor. Nós somos a certeza, o lar, o futuro que já pulsa no presente.</p>
 
-<p class="assinatura">Com ternura que vibra como asas, e amor doce como mel — Filipe 💌</p>
+<p class="assinatura">Te amo infinitamente. E nada muda isso. — Filipe 💗
 
     <p style="margin-top: 20px; font-weight: bold; color: #c71585;">
   💍 Faltam <span id="contador"></span> dias para o nosso voo nupcial: 02 de dezembro 💍
@@ -145,6 +191,7 @@
 
   <script>
     function mostrarMensagem() {
+      document.body.classList.add('revelado');
       document.getElementById('mensagem').style.display = 'block';
       document.querySelector('.carrossel').style.display = 'block';
       const musica = document.getElementById('musica');
@@ -155,7 +202,10 @@
 
     const imagens = ['amor.jpg', 'amor1.jpg', 'amor2.jpg', 'amor3.jpg', 'amor4.jpg', 'amor5.jpg', 'amor6.jpg', 'amor7.jpg', 'amor8.jpg', 'amor9.jpg', 'amor10.jpg', 'amor11.jpg'];
     let atual = 0;
-
+    setInterval(criarEstrelas, 250);
+    setInterval(criarFrase, 4000);
+    setInterval(criarCoracoes, 500);
+    setInterval(criarPetalas, 600);
     setInterval(() => {
       atual = (atual + 1) % imagens.length;
       document.getElementById('slide').src = imagens[atual];
@@ -172,8 +222,6 @@
 
     setTimeout(() => coracao.remove(), 7000);
   }
-
-  setInterval(criarCoracoes, 500);
 </script>
   
   <script>
@@ -186,8 +234,6 @@
 
     setTimeout(() => petala.remove(), 8000);
   }
-
-  setInterval(criarPetalas, 600);
 </script>
 
   <script>
@@ -217,5 +263,26 @@
   document.getElementById('contador').innerText = dias;
 </script>
   
+  <script>
+    const frases = [
+  "Você é minha paz.",
+  "O nosso amor é certeza.",
+  "Cada sonho teu vive em mim.",
+  "Vamos construir nosso lar.",
+  "Nada nos separa.",
+  "Maria Cecília já mora no meu coração.",
+  "Nosso altar está te esperando.",
+];
+
+function criarFrase() {
+  const frase = document.createElement('div');
+  frase.classList.add('frase');
+  frase.textContent = frases[Math.floor(Math.random() * frases.length)];
+  frase.style.top = Math.random() * window.innerHeight + 'px';
+  frase.style.left = Math.random() * window.innerWidth + 'px';
+  document.body.appendChild(frase);
+  setTimeout(() => frase.remove(), 6000);
+}
+  </script>
 </body>
 </html>
