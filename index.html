@@ -112,7 +112,7 @@
   position: fixed;
   width: 2px;
   height: 2px;
-  background-color: white;
+  background-color: #8ecae6;
   border-radius: 50%;
   animation: piscar 2s infinite;
   pointer-events: none;
@@ -191,6 +191,10 @@
 
   <script>
     function mostrarMensagem() {
+      setInterval(criarEstrelas, 250);
+      setInterval(criarFrase, 4000);
+      setInterval(criarCoracoes, 500);
+      setInterval(criarPetalas, 600);
       document.body.classList.add('revelado');
       document.getElementById('mensagem').style.display = 'block';
       document.querySelector('.carrossel').style.display = 'block';
@@ -202,10 +206,7 @@
 
     const imagens = ['amor.jpg', 'amor1.jpg', 'amor2.jpg', 'amor3.jpg', 'amor4.jpg', 'amor5.jpg', 'amor6.jpg', 'amor7.jpg', 'amor8.jpg', 'amor9.jpg', 'amor10.jpg', 'amor11.jpg'];
     let atual = 0;
-    setInterval(criarEstrelas, 250);
-    setInterval(criarFrase, 4000);
-    setInterval(criarCoracoes, 500);
-    setInterval(criarPetalas, 600);
+    
     setInterval(() => {
       atual = (atual + 1) % imagens.length;
       document.getElementById('slide').src = imagens[atual];
