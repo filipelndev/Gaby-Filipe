@@ -155,16 +155,16 @@
   to { opacity: 1; }
 }
 
-      .bolha {
+ .bolha {
   position: fixed;
   bottom: -50px;
   width: var(--tamanho);
   height: var(--tamanho);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: 50%;
   animation: subir 10s linear infinite;
   pointer-events: none;
-  z-index: -1;
+  z-index: 1;
 }
 
 @keyframes subir {
@@ -175,16 +175,7 @@
 }
   </style>
 </head>
-  <script>
-    function criarEstrelas() {
-  const estrela = document.createElement('div');
-  estrela.classList.add('estrela');
-  estrela.style.top = Math.random() * window.innerHeight + 'px';
-  estrela.style.left = Math.random() * window.innerWidth + 'px';
-  document.body.appendChild(estrela);
-  setTimeout(() => estrela.remove(), 4000);
-}
-  </script>
+
 <body>
 
   <audio id="musica" loop>
@@ -289,22 +280,19 @@
 }
 
     function criarBolhas() {
-  for (let i = 0; i < 20; i++) {
-    const bolha = document.createElement('div');
-    bolha.classList.add('bolha');
+  const bolha = document.createElement('div');
+  bolha.classList.add('bolha');
 
-    // Tamanho aleatório
-    const tamanho = `${Math.random() * 30 + 10}px`;
-    bolha.style.setProperty('--tamanho', tamanho);
+  // Tamanho aleatório
+  const tamanho = `${Math.random() * 30 + 10}px`;
+  bolha.style.setProperty('--tamanho', tamanho);
 
-    // Posição horizontal aleatória
-    bolha.style.left = `${Math.random() * 100}vw`;
+  // Posição horizontal aleatória
+  bolha.style.left = `${Math.random() * window.innerWidth}px`;
 
-    document.body.appendChild(bolha);
+  document.body.appendChild(bolha);
 
-    // Remover depois de um tempo
-    setTimeout(() => bolha.remove(), 10000);
-  }
+  setTimeout(() => bolha.remove(), 10000);
 }
 
   // 💗 Corações
