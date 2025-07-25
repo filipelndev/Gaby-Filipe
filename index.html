@@ -119,10 +119,10 @@
   height: calc(8px + 7 * var(--tamanho));
   background-color: var(--cor);
   border-radius: 50%;
-  animation: piscar 2s infinite;
-  box-shadow: 0 0 8px var(--cor);
+  box-shadow: 0 0 10px var(--cor), 0 0 20px var(--cor);
+  animation: piscar 3s infinite ease-in-out;
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
 }
 
 @keyframes piscar {
@@ -221,7 +221,7 @@
   <script>
   // 🌠 Estrelas
   function criarEstrelas() {
-  const cores = ['#8ecae6', '#ffffff', '#ffd6a5', '#cdb4db', '#a2d2ff'];
+  const cores = ['#ffffff', '#ffd6a5', '#cdb4db', '#a2d2ff', '#fdfcdc'];
   const estrela = document.createElement('div');
   estrela.classList.add('estrela');
 
@@ -229,16 +229,18 @@
   estrela.style.top = Math.random() * window.innerHeight + 'px';
   estrela.style.left = Math.random() * window.innerWidth + 'px';
 
-  // Tamanho e cor aleatórios
-  const tamanho = Math.random().toFixed(2);
-  const cor = cores[Math.floor(Math.random() * cores.length)];
+  // Tamanho com mínimo garantido
+  const tamanho = (Math.random() * 1.2 + 0.3).toFixed(2); // entre 0.3 e 1.5
   estrela.style.setProperty('--tamanho', tamanho);
+
+  // Cor aleatória
+  const cor = cores[Math.floor(Math.random() * cores.length)];
   estrela.style.setProperty('--cor', cor);
 
   document.body.appendChild(estrela);
 
-  // Remoção após tempo (efeito passageiro)
-  setTimeout(() => estrela.remove(), 4000);
+  // Remoção após tempo para efeito passageiro
+  setTimeout(() => estrela.remove(), 5000);
 }
 
   // 💬 Frases flutuantes
