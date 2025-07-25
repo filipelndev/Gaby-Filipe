@@ -115,8 +115,8 @@
 
 .estrela {
   position: fixed;
-  width: calc(8px + 7 * var(--tamanho));
-  height: calc(8px + 7 * var(--tamanho));
+  width: 15px;
+  height: 15px;
   background-color: var(--cor);
   border-radius: 50%;
   box-shadow: 0 0 10px var(--cor), 0 0 20px var(--cor);
@@ -125,10 +125,12 @@
   z-index: 3;
 }
 
+
 @keyframes piscar {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1); }
 }
+    
 .frase {
   position: fixed;
   font-size: 1em;
@@ -179,7 +181,7 @@
 <body>
 
   <audio id="musica" loop>
-    <source src="Ed_Sheeran_-_Photograph_(BornMP3.com).mp3" type="audio/mpeg">
+    <source src="cancao.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
 
@@ -228,10 +230,6 @@
   // Posição aleatória
   estrela.style.top = Math.random() * window.innerHeight + 'px';
   estrela.style.left = Math.random() * window.innerWidth + 'px';
-
-  // Tamanho com mínimo garantido
-  const tamanho = (Math.random() * 1.2 + 0.3).toFixed(2); // entre 0.3 e 1.5
-  estrela.style.setProperty('--tamanho', tamanho);
 
   // Cor aleatória
   const cor = cores[Math.floor(Math.random() * cores.length)];
