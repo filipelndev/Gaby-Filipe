@@ -175,6 +175,18 @@
     opacity: 0;
   }
 }
+    .formiguinha {
+  position: fixed;
+  bottom: 30px;
+  left: -50px;
+  font-size: 1.8em;
+  z-index: 999;
+}
+
+    @keyframes andaFormiguinha {
+      0% { left: -50px; }
+      100% { left: 100vw; }
+    }
   </style>
 </head>
 
@@ -188,25 +200,24 @@
   <button class="botao-revelar" onclick="mostrarMensagem()">💗 Clique para ver a surpresa 💗</button>
   
   <div class="conteudo" id="mensagem">
-   <h1>🌹 Porque te amo, e isso é tudo 🌹</h1>
+  <h1>🍃 Minha Doce Eternidade 🍃</h1>
 
-  <p>Meu amor,</p>
+<p>Meu amor,</p>
 
-  <p>Hoje, mais uma vez, acordei com o coração apertado. Cada segundo longe de você se estende como um suspiro que não termina, como um verso que não encontra rima — porque você é minha poesia, e sem você, sou só silêncio.</p>
+<p>Hoje o tempo escorre como mel — lento, doce, porém impossível de conter. Cada segundo sem você tem gosto de saudade açucarada, dessas que grudam na alma e não saem nem com mil sorrisos. Você, minha formiguinha, que se alimenta dos encantos da vida, é também quem adoça os meus dias com a ternura do seu olhar e a leveza dos seus gestos.</p>
 
-  <p>Eu te amo do fundo do meu coração. Mas amor assim não vive só na superfície das palavras. Ele mergulha fundo, atravessa tempestades, se enraíza onde só a saudade alcança. Às vezes tento explicar o tamanho disso, mas percebo que até as estrelas ficariam pequenas se tentassem iluminar tudo que sinto.</p>
+<p>Enquanto o amanhã não chega, fico aqui, sonhando acordado com teu abraço. É curioso como até o vento parece mais gentil quando penso em você. E o céu, mesmo nublado, ganha cores novas só por saber que em breve terei você ao meu lado. O amor que sinto é vasto como o mar — profundo, calmo e, às vezes, agitado pela saudade que não sabe esperar.</p>
 
-  <p>A saudade que tenho de você... ah, amor, é cruel como o tempo quando se arrasta. Cada dia longe de ti é uma tortura gentil, um corte feito de lembranças boas que doem só porque não estão aqui, agora. Sinto tua ausência como quem sente frio em pleno verão — porque mesmo com o mundo brilhando lá fora, falta o teu calor.</p>
+<p>Estar com você é como descobrir que o mundo tem trilhas de estrelas escondidas, e que cada passo nosso juntos desenha constelações. Eu amo estar contigo, não só nos momentos felizes, mas também nas pausas, nos silêncios, nas madrugadas em que tua ausência grita e ainda assim meu coração sussurra teu nome com carinho.</p>
 
-  <p>Imagino teu sorriso, e é como se o mundo tivesse cor de novo. Fecho os olhos e vejo tuas mãos, e isso basta pra eu acreditar que ainda existe mágica. Mas a verdade é que minha alma quer teu toque, meu corpo quer teu abraço, minha vida quer teu cheiro espalhado em cada canto do meu dia.</p>
+<p>Sonhar nosso futuro virou minha oração silenciosa. Imagino uma casa com cheiro de bolo no forno, risadas que preenchem os corredores, planos que se encostam nas paredes como quadros. Vejo você cuidando das plantas que eu esqueço de regar, vejo nós dois viajando sem pressa, colecionando horizontes e carinhos.</p>
 
-  <p>Eu conto os dias, as horas, os minutos. Não só para te ver, mas para me reencontrar. Porque, quando estou longe, sinto que uma parte de mim ficou aí contigo — e é exatamente essa parte que me faz falta todos os dias. Você é meu lar, e sem você, o mundo vira estrada sem destino.</p>
+<p>O amanhã está perto, amor, e com ele vem a cura dessa saudade que aperta, vem a paz que mora no teu abraço. Cada contagem regressiva até te ver é como compor um poema — uma mistura de ritmo, esperança e encantamento. Porque, afinal, te amar é minha maior arte.</p>
 
-  <p>Não vejo a hora de te encontrar de novo, de viver o abraço que venho sonhando acordado. O momento em que meus olhos vão dizer tudo sem falar, e tua presença vai finalmente silenciar essa dor. A espera tem fim, eu sei. E quando chegar, tudo isso vai valer a pena. Porque te amar é minha certeza — e estar contigo é o único lugar onde tudo faz sentido.</p>
+<p>E se por acaso você se perguntar o quanto é amada, saiba que o amor que tenho por você não cabe em frases, não termina em versos, não se mede nem se explica. Ele simplesmente existe. Vive. Floresce. E aguarda o doce reencontro que vai tornar tudo completo.</p>
 
-  <p>Te amo mais do que qualquer palavra possa alcançar. E enquanto o tempo insiste em nos separar, meu amor continua crescendo, forte, firme, lindo... como quem sabe que em breve, enfim, estaremos de novo onde sempre pertencemos: um no outro.</p>
+<p class="assinatura">Com amor que escorre feito mel e brilha como o sol, — Filipe 💗</p>
 
-  <p class="assinatura">Com tudo que tenho e sou, — Filipe 💗</p>
 
     <p style="margin-top: 20px; font-weight: bold; color: #c71585; font-size: 1.1em;">
   💍 Nosso voo nupcial de amor decola em <span id="contador"></span> dias... <br>
@@ -221,6 +232,21 @@
   </div>
 
   <script>
+    // 🐜 Formiguinha apaixonada
+function criarFormiguinha() {
+  const formiguinha = document.createElement('div');
+  formiguinha.classList.add('formiguinha');
+  formiguinha.innerHTML = '🐜';
+  document.body.appendChild(formiguinha);
+
+  let posFormigaX = -50;
+  setInterval(() => {
+    posFormigaX += 1.5;
+    if (posFormigaX > window.innerWidth) posFormigaX = -50;
+    formiguinha.style.left = posFormigaX + 'px';
+  }, 20);
+}
+    
   // 🌠 Estrelas
   function criarEstrelas() {
   const cores = ['#ffffff', '#ffd6a5', '#cdb4db', '#a2d2ff', '#fdfcdc'];
@@ -342,6 +368,7 @@ setInterval(() => {
     setInterval(criarCoracoes, 500);
     setInterval(criarFlores, 600);
     setInterval(criarBolhas, 1500);
+    criarFormiguinha();
   }
 
   // 🖼️ Carrossel de imagens
