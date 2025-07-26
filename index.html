@@ -252,7 +252,7 @@ function criarFormiguinha() {
   const formiguinha = document.createElement('div');
   formiguinha.classList.add('formiguinha');
   formiguinha.innerHTML = '🐜';
-  
+  formiguinha.style.transform = 'scaleX(-1)';
   // Definindo estilo inicial para posicionamento absoluto
   formiguinha.style.position = 'absolute';
   formiguinha.style.top = '50px'; // ou qualquer altura desejada
