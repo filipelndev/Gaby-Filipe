@@ -253,20 +253,26 @@ function criarFormiguinha() {
   formiguinha.classList.add('formiguinha');
   formiguinha.innerHTML = '🐜';
   formiguinha.style.transform = 'scaleX(-1)';
-  // Definindo estilo inicial para posicionamento absoluto
-  formiguinha.style.position = 'absolute';
-  formiguinha.style.top = '50px'; // ou qualquer altura desejada
-  formiguinha.style.left = '-50px'; // início fora da tela à esquerda
+  formiguinha.style.position = 'fixed';
+  formiguinha.style.left = '-50px';
+  formiguinha.style.top = Math.random() * window.innerHeight + 'px'; // altura aleatória
+  formiguinha.style.fontSize = '1.8em';
+  formiguinha.style.zIndex = '999';
 
   document.body.appendChild(formiguinha);
 
   let posFormigaX = -50;
   setInterval(() => {
     posFormigaX += 1.5;
-    if (posFormigaX > window.innerWidth) posFormigaX = -50;
     formiguinha.style.left = posFormigaX + 'px';
+
+    if (posFormigaX > window.innerWidth) {
+      posFormigaX = -50;
+      formiguinha.style.top = Math.random() * window.innerHeight + 'px'; // nova altura ao reiniciar
+    }
   }, 20);
 }
+
     
   // 🌠 Estrelas
   function criarEstrelas() {
