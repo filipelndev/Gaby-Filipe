@@ -111,6 +111,20 @@
     body.revelado {
   background: linear-gradient(120deg, #fff0f5, #ffe4e1, #fddde6);
   transition: background 2s ease-in-out;
+  animation: solBrilhando 6s ease-in-out infinite;
+  box-shadow: 0 0 60px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes solBrilhando {
+  0% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(255, 223, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+  }
 }
 
 .estrela {
@@ -200,23 +214,24 @@
   <button class="botao-revelar" onclick="mostrarMensagem()">💗 Clique para ver a surpresa 💗</button>
   
   <div class="conteudo" id="mensagem">
-  <h1>🍃 Minha Doce Eternidade 🍃</h1>
+ <h1>✨ Bom dia, meu amor eterno ✨</h1>
 
-<p>Meu amor,</p>
+<p>Meu raio de sol,</p>
 
-<p>Hoje o tempo escorre como mel — lento, doce, porém impossível de conter. Cada segundo sem você tem gosto de saudade açucarada, dessas que grudam na alma e não saem nem com mil sorrisos. Você, minha formiguinha, que se alimenta dos encantos da vida, é também quem adoça os meus dias com a ternura do seu olhar e a leveza dos seus gestos.</p>
+<p>Hoje, o dia amanheceu mais leve. É como se até o tempo tivesse desacelerado só para assistir você abrir os olhos. Meu coração está tão sereno ao saber que você está aqui — que tudo o que quero agora é que cada palavra dessa te abrace com a mesma delicadeza que sinto quando toco sua mão.</p>
 
-<p>Enquanto o amanhã não chega, fico aqui, sonhando acordado com teu abraço. É curioso como até o vento parece mais gentil quando penso em você. E o céu, mesmo nublado, ganha cores novas só por saber que em breve terei você ao meu lado. O amor que sinto é vasto como o mar — profundo, calmo e, às vezes, agitado pela saudade que não sabe esperar.</p>
+<p>Você, minha formiguinha doce e cheia de vida, que transforma até os instantes mais comuns em memórias douradas. Cada segundo contigo é como colher estrelas: brilham, iluminam e fazem sentido. Não há espaço em mim que não te celebre, não há pedaço do meu dia que não te procure — como se você fosse o ingrediente secreto da felicidade.</p>
 
-<p>Estar com você é como descobrir que o mundo tem trilhas de estrelas escondidas, e que cada passo nosso juntos desenha constelações. Eu amo estar contigo, não só nos momentos felizes, mas também nas pausas, nos silêncios, nas madrugadas em que tua ausência grita e ainda assim meu coração sussurra teu nome com carinho.</p>
+<p>Acordar ao teu lado, mesmo que ainda em pensamento, me dá forças. É como receber um bilhete da eternidade dizendo: “ela existe, ela te escolheu, ela está aqui.” E isso, amor, é milagre cotidiano.</p>
 
-<p>Sonhar nosso futuro virou minha oração silenciosa. Imagino uma casa com cheiro de bolo no forno, risadas que preenchem os corredores, planos que se encostam nas paredes como quadros. Vejo você cuidando das plantas que eu esqueço de regar, vejo nós dois viajando sem pressa, colecionando horizontes e carinhos.</p>
+<p>Eu amo teu cheiro misturado com café, amo teu jeito de encostar a cabeça quando pensa, amo a forma como até o silêncio fica bonito em tua companhia. Amo tudo que somos e tudo que seremos. Porque sonhar contigo é acordar em paz.</p>
 
-<p>O amanhã está perto, amor, e com ele vem a cura dessa saudade que aperta, vem a paz que mora no teu abraço. Cada contagem regressiva até te ver é como compor um poema — uma mistura de ritmo, esperança e encantamento. Porque, afinal, te amar é minha maior arte.</p>
+<p>Hoje, quero te lembrar que és amada com intensidade de poesia antiga — daquelas que não precisam rimar, porque o sentimento já é música. E se por acaso o mundo pesar, fecha os olhos e lembra: eu tô aqui, firme, leve, apaixonado, encantado… por você.</p>
 
-<p>E se por acaso você se perguntar o quanto é amada, saiba que o amor que tenho por você não cabe em frases, não termina em versos, não se mede nem se explica. Ele simplesmente existe. Vive. Floresce. E aguarda o doce reencontro que vai tornar tudo completo.</p>
+<p>Que teu dia seja feito de leveza, sorrisos inesperados e doçura. Que você sinta, em cada gesto, o infinito que mora no meu amor.</p>
 
-<p class="assinatura">Com amor que escorre feito mel e brilha como o sol, — Filipe 💗</p>
+<p class="assinatura">Te amo além do acordar, — Filipe 💗</p>
+
 
 
     <p style="margin-top: 20px; font-weight: bold; color: #c71585; font-size: 1.1em;">
@@ -237,6 +252,12 @@ function criarFormiguinha() {
   const formiguinha = document.createElement('div');
   formiguinha.classList.add('formiguinha');
   formiguinha.innerHTML = '🐜';
+  
+  // Definindo estilo inicial para posicionamento absoluto
+  formiguinha.style.position = 'absolute';
+  formiguinha.style.top = '50px'; // ou qualquer altura desejada
+  formiguinha.style.left = '-50px'; // início fora da tela à esquerda
+
   document.body.appendChild(formiguinha);
 
   let posFormigaX = -50;
