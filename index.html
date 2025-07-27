@@ -13,6 +13,23 @@
       overflow: auto;
     }
 
+    .titulo-brilhante {
+  font-size: 2em;
+  color: #fff;
+  text-shadow: 0 0 8px #ffd700, 0 0 12px #ffdd99;
+  animation: brilhar 2.5s ease-in-out infinite;
+}
+
+@keyframes brilhar {
+  0%, 100% {
+    text-shadow: 0 0 8px #ffd700, 0 0 12px #ffdd99;
+  }
+  50% {
+    text-shadow: 0 0 16px #fffacd, 0 0 20px #ffe680;
+  }
+}
+
+
     .conteudo, .carrossel {
       display: none;
       animation: fadeIn 2s ease-in-out;
@@ -214,25 +231,26 @@
   <button class="botao-revelar" onclick="mostrarMensagem()">💗 Clique para ver a surpresa 💗</button>
   
   <div class="conteudo" id="mensagem">
- <h1>✨ Bom dia, meu amor eterno ✨</h1>
-
-<p>Meu raio de sol,</p>
-
-<p>Hoje, o dia amanheceu mais leve. É como se até o tempo tivesse desacelerado só para assistir você abrir os olhos. Meu coração está tão sereno ao saber que você está aqui — que tudo o que quero agora é que cada palavra dessa te abrace com a mesma delicadeza que sinto quando toco sua mão.</p>
-
-<p>Você, minha formiguinha doce e cheia de vida, que transforma até os instantes mais comuns em memórias douradas. Cada segundo contigo é como colher estrelas: brilham, iluminam e fazem sentido. Não há espaço em mim que não te celebre, não há pedaço do meu dia que não te procure — como se você fosse o ingrediente secreto da felicidade.</p>
-
-<p>Acordar ao teu lado, mesmo que ainda em pensamento, me dá forças. É como receber um bilhete da eternidade dizendo: “ela existe, ela te escolheu, ela está aqui.” E isso, amor, é milagre cotidiano.</p>
-
-<p>Eu amo teu cheiro misturado com café, amo teu jeito de encostar a cabeça quando pensa, amo a forma como até o silêncio fica bonito em tua companhia. Amo tudo que somos e tudo que seremos. Porque sonhar contigo é acordar em paz.</p>
-
-<p>Hoje, quero te lembrar que és amada com intensidade de poesia antiga — daquelas que não precisam rimar, porque o sentimento já é música. E se por acaso o mundo pesar, fecha os olhos e lembra: eu tô aqui, firme, leve, apaixonado, encantado… por você.</p>
-
-<p>Que teu dia seja feito de leveza, sorrisos inesperados e doçura. Que você sinta, em cada gesto, o infinito que mora no meu amor.</p>
-
-<p class="assinatura">Te amo além do acordar, — Filipe 💗</p>
+ <h1 class="titulo-brilhante">🌕 Inspiração Entre Sol e Lua 🌕</h1>
 
 
+<p>Meu amor,</p>
+
+<p>Hoje a casa está mais quieta. O domingo se despediu com tua presença ainda impregnada no ar, e cada canto por aqui parece sussurrar o eco do fim de semana mágico que vivemos. Você foi embora, e no lugar do teu sorriso ficou essa saudade — linda, mas intensa… como se o tempo tivesse deixado uma cicatriz doce na memória.</p>
+
+<p>Não paro de pensar no lugar incrível que encontramos para dizer nosso “sim”. Perto de casa, mas distante de qualquer rotina. Era como se o universo inteiro conspirasse para dizer: “aqui começa a eternidade de vocês.” E começa mesmo. Porque naquele espaço, nosso amor preencheu cada árvore, cada brisa, cada silêncio com significado.</p>
+
+<p>A praia à noite ainda brilha nos meus pensamentos. As estrelas que vimos estão guardadas em mim como constelações privadas — feitas só para nós dois. Lembro da areia nos pés e do teu olhar iluminado por uma luz que nem o céu tem como reproduzir.</p>
+
+<p>E até aquele momento simples, da nossa missão com as iscas para abelhas, virou poesia. Era só uma tarefa… mas contigo, virou cumplicidade. A gente em meio à natureza, rindo com o coração mesmo estando sem voz, criando lembranças com febre e gargalhadas misturadas.</p>
+
+<p>Dormir ao teu lado foi a cura silenciosa. Mesmo com as gargantas doloridas, houve ali um respiro de paz. É mágico como teu abraço desconstrói cansaço, reinventa o tempo e me faz querer pausar tudo só pra sentir mais um pouco de nós.</p>
+
+<p>Agora, te esperar de novo é como ouvir uma música que acaba e deixa o corpo pedindo reprise. Sinto tua ausência com ternura — não como falta, mas como prova de tudo que foi bonito demais pra caber só num fim de semana.</p>
+
+<p>Volta logo, meu amor. Porque com você, até as abelhas parecem voar mais lento, e as estrelas ficam mais perto. Te amo. Te sinto. Te espero.</p>
+
+<p class="assinatura">Com a saudade mais linda que já senti, — Filipe 💗</p>
 
     <p style="margin-top: 20px; font-weight: bold; color: #c71585; font-size: 1.1em;">
   💍 Nosso voo nupcial de amor decola em <span id="contador"></span> dias... <br>
