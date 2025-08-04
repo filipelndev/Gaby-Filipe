@@ -104,6 +104,11 @@ function showTab(idx) {
   tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
 }
 
+// Sempre abrir na segunda aba
+document.addEventListener('DOMContentLoaded', function() {
+  showTab(1);
+});
+
 // Atualizar contador nas abas
 document.addEventListener('DOMContentLoaded', function() {
   const casamento = new Date('2025-12-02T00:00:00');
