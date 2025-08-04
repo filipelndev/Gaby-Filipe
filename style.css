@@ -1,3 +1,22 @@
+/* Corações flutuantes */
+.coracao-flutuante {
+  position: fixed;
+  bottom: -40px;
+  left: 50vw;
+  font-size: 32px;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 9999;
+  animation: subirCoracao 4s linear forwards;
+  transition: left 0.5s;
+}
+
+@keyframes subirCoracao {
+  to {
+    transform: translateY(-110vh) scale(1.2) rotate(-15deg);
+    opacity: 0;
+  }
+}
 .tabs {
   display: flex;
   justify-content: center;

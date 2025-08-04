@@ -1,3 +1,19 @@
+// --- Corações flutuantes ---
+function criarCoracao() {
+  const coracao = document.createElement('div');
+  coracao.className = 'coracao-flutuante';
+  coracao.style.left = Math.random() * 90 + 'vw';
+  coracao.style.fontSize = (Math.random() * 24 + 24) + 'px';
+  coracao.style.color = ['#ff69b4', '#ffb6c1', '#c71585', '#ff1493'][Math.floor(Math.random()*4)];
+  coracao.innerHTML = '💗';
+  document.body.appendChild(coracao);
+  setTimeout(() => {
+    coracao.remove();
+  }, 4000);
+}
+
+// Criar corações a cada 800ms
+setInterval(criarCoracao, 800);
 // --- Botão de play/pause da música ---
 document.addEventListener('DOMContentLoaded', function() {
   const musica = document.getElementById('musica-fundo');
