@@ -1,0 +1,207 @@
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+.tab-btn {
+  background: #ff69b4;
+  color: #fff;
+  border: none;
+  border-radius: 20px 20px 0 0;
+  padding: 10px 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.tab-btn.active {
+  background: #ff1493;
+  font-weight: bold;
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+body {
+  background-color: #fff0f5;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  padding: 50px;
+  color: #ff1493;
+  overflow: auto;
+}
+.titulo-brilhante {
+  font-size: 2em;
+  color: #fff;
+  text-shadow: 0 0 8px #ffd700, 0 0 12px #ffdd99;
+  animation: brilhar 2.5s ease-in-out infinite;
+}
+@keyframes brilhar {
+  0%, 100% {
+    text-shadow: 0 0 8px #ffd700, 0 0 12px #ffdd99;
+  }
+  50% {
+    text-shadow: 0 0 16px #fffacd, 0 0 20px #ffe680;
+  }
+}
+.conteudo, .carrossel {
+  display: none;
+  animation: fadeIn 2s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.botao-revelar {
+  background-color: #ff69b4;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.4em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.botao-revelar:hover {
+  background-color: #ff1493;
+}
+.assinatura {
+  font-style: italic;
+  margin-top: 30px;
+}
+.legenda {
+  font-style: italic;
+  color: #c71585;
+  margin-top: 10px;
+}
+.coracao {
+  position: fixed;
+  top: -50px;
+  font-size: 2em;
+  animation: cair 7s linear infinite;
+  color: #ff69b4;
+}
+@keyframes cair {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+.flor {
+  position: fixed;
+  top: -30px;
+  font-size: 1.5em;
+  animation: cairFlor 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+.flor.vermelha { color: #ff4d4d; }
+.flor.azul { color: #4da6ff; }
+.flor.verde { color: #47d147; }
+@keyframes cairFlor {
+  to {
+    transform: translateY(100vh) rotate(540deg);
+  }
+}
+@media (max-width: 600px) {
+  #abelhinha {
+    width: 30px;
+    height: 30px;
+  }
+  .botao-revelar {
+    padding: 12px 24px;
+    font-size: 1.2em;
+  }
+  .conteudo {
+    padding: 20px;
+  }
+  img#slide {
+    max-width: 95%;
+  }
+}
+img#slide {
+  width: 320px;
+  height: auto;
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+body.revelado {
+  background: linear-gradient(120deg, #fff0f5, #ffe4e1, #fddde6);
+  transition: background 2s ease-in-out;
+  animation: solBrilhando 6s ease-in-out infinite;
+  box-shadow: 0 0 60px rgba(255, 215, 0, 0.3);
+}
+@keyframes solBrilhando {
+  0% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(255, 223, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+  }
+}
+.estrela {
+  position: fixed;
+  width: 15px;
+  height: 15px;
+  background-color: var(--cor);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cor), 0 0 20px var(--cor);
+  animation: piscar 3s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 3;
+}
+@keyframes piscar {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.frase {
+  position: fixed;
+  font-size: 1em;
+  color: black;
+  opacity: 0;
+  animation: flutuarFrase 6s ease-in-out forwards;
+  pointer-events: none;
+  z-index: 2;
+}
+@keyframes flutuarFrase {
+  0% { opacity: 0; transform: translateY(0); }
+  20% { opacity: 1; }
+  80% { opacity: 1; transform: translateY(-30px); }
+  100% { opacity: 0; }
+}
+.coracao, .petala {
+  opacity: 0;
+  animation: surgir 1s ease-in-out forwards, cair 7s linear infinite;
+}
+@keyframes surgir {
+  to { opacity: 1; }
+}
+.bolha {
+  position: fixed;
+  bottom: -50px;
+  width: var(--tamanho);
+  height: var(--tamanho);
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: subir 10s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes subir {
+  to {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+.formiguinha {
+  position: fixed;
+  bottom: 30px;
+  left: -50px;
+  font-size: 1.8em;
+  z-index: 999;
+}
+@keyframes andaFormiguinha {
+  0% { left: -50px; }
+  100% { left: 100vw; }
+}
