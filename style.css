@@ -1,3 +1,20 @@
+/* Pétalas de rosa flutuantes */
+.petala-flutuante {
+  position: fixed;
+  top: -40px;
+  font-size: 28px;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 9998;
+  animation: cairPetala 5s linear forwards;
+}
+
+@keyframes cairPetala {
+  to {
+    transform: translateY(110vh) rotate(360deg) scale(1.2);
+    opacity: 0;
+  }
+}
 /* Corações flutuantes */
 .coracao-flutuante {
   position: fixed;

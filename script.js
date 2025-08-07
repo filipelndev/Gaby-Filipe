@@ -1,3 +1,22 @@
+// --- Pétalas de rosa flutuantes ---
+function criarPetala() {
+  const petala = document.createElement('div');
+  petala.className = 'petala-flutuante';
+  petala.style.left = Math.random() * 98 + 'vw';
+  petala.style.fontSize = (Math.random() * 16 + 20) + 'px';
+  // Cores de pétalas
+  const cores = ['#ffb6c1', '#ff69b4', '#e75480', '#ff1493', '#c71585', '#f08080', '#f88379'];
+  petala.style.color = cores[Math.floor(Math.random() * cores.length)];
+  // Emoji de pétala/rosa
+  petala.innerHTML = '🌸';
+  document.body.appendChild(petala);
+  setTimeout(() => {
+    petala.remove();
+  }, 5000);
+}
+
+// Criar pétalas a cada 900ms
+setInterval(criarPetala, 900);
 // --- Corações flutuantes ---
 function criarCoracao() {
   const coracao = document.createElement('div');
@@ -171,7 +190,16 @@ const frases = [
   "Vamos construir nosso lar.",
   "Nada nos separa.",
   "Maria Cecília já mora no meu coração.",
-  "Nosso altar está te esperando."
+  "Nosso altar está te esperando.",
+  "Te amo mais a cada dia.",
+  "Você é meu presente de Deus.",
+  "Com você, tudo faz sentido.",
+  "Seu sorriso ilumina minha vida.",
+  "Meu coração é seu lar.",
+  "Amo viver ao seu lado.",
+  "Você é minha melhor escolha.",
+  "Meu futuro é com você.",
+  "Nada é mais bonito que nosso amor."
 ];
 
 function criarFrase() {
@@ -268,7 +296,11 @@ function mostrarMensagem() {
 }
 
 // 🖼️ Carrossel de imagens
-const imagens = ['fotos/amor.jpg', 'fotos/amor1.jpg', 'fotos/amor2.jpg', 'fotos/amor3.jpg', 'fotos/amor4.jpg', 'fotos/amor5.jpg', 'fotos/amor6.jpg', 'fotos/amor7.jpg', 'fotos/amor8.jpg', 'fotos/amor9.jpg', 'fotos/amor10.jpg', 'fotos/amor11.jpg'];
+const imagens = [
+  'fotos/amor.jpg', 'fotos/amor1.jpg', 'fotos/amor2.jpg', 'fotos/amor3.jpg', 'fotos/amor4.jpg', 'fotos/amor5.jpg',
+  'fotos/amor6.jpg', 'fotos/amor7.jpg', 'fotos/amor8.jpg', 'fotos/amor9.jpg', 'fotos/amor10.jpg', 'fotos/amor11.jpg',
+  'fotos/amor12.jpg', 'fotos/amor13.jpg', 'fotos/amor14.jpg', 'fotos/amor15.jpg'
+];
 let atual = 0;
 
 setInterval(() => {
