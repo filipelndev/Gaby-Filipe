@@ -11,8 +11,8 @@
  <button id="btn-musica" style="position:fixed;top:15px;right:15px;z-index:1000;background:#fff0f5;border:2px solid #ff69b4;color:#c71585;border-radius:50px;padding:8px 18px;font-size:1.1em;cursor:pointer;box-shadow:0 2px 8px #ffd6e6;">⏸️ Pausar música</button>
   <div class="tabs">
     <button class="tab-btn" onclick="showTab(0)">1 mês de namoro</button>
-    <button class="tab-btn active" onclick="showTab(1)">Aniversário da Gaby 🎂</button>
-    <button class="tab-btn" onclick="showTab(2)">Próximas mensagens ✉️</button>
+    <button class="tab-btn" onclick="showTab(1)">Aniversário da Gaby 🎂</button>
+    <button class="tab-btn active" onclick="showTab(2)">Para sempre com você 💖</button>
   </div>
 
   <div class="conteudo tab-content" id="mensagem1">
@@ -33,7 +33,7 @@
     </p>
   </div>
 
-  <div class="conteudo tab-content active" id="mensagem2">
+  <div class="conteudo tab-content" id="mensagem2">
 
     <h1 class="titulo-brilhante">🎂 O dia em que o mundo ganhou você 🎂</h1>
     <p>Meu amor,</p>
@@ -41,13 +41,23 @@
     <p>Estar presente no teu aniversário foi como tocar o céu com as mãos. Cada detalhe, cada olhar trocado, cada palavra dita ou silenciada, tudo ficou gravado em mim. Você é poesia viva, é luz que ilumina meus dias, é o presente mais bonito que a vida me deu.</p>
     <p>Te ver celebrar a vida me faz querer celebrar a tua existência todos os dias. Porque você transforma tudo ao redor, faz o tempo desacelerar, faz o amor florescer. Ontem, mais do que nunca, eu soube: quero estar ao teu lado em todos os aniversários, em todos os dias, em todos os sonhos.</p>
     <p>Obrigado por me permitir fazer parte da tua história, por me deixar ser teu porto seguro, tua companhia, teu amor. Que cada novo ciclo seja ainda mais doce, mais leve, mais nosso. Que eu possa te fazer feliz, te cuidar, te amar — hoje e sempre.</p>
+
     <p>Você é minha inspiração, minha alegria, meu futuro. Te amo com tudo o que sou, e tudo o que serei é teu.</p>
     <p class="assinatura">Com todo meu amor, — Filipe 💗</p>
     <h1 class="titulo-brilhante">Parabéns para o amor da minha vida! 🎉💗</h1>
-  <div class="conteudo tab-content" id="mensagem3">
-    <h1 class="titulo-brilhante">✨ Novas memórias, novos capítulos ✨</h1>
-    <p>Em breve, novas mensagens, novas histórias e mais momentos especiais para eternizar aqui...</p>
-    <p class="assinatura">Com amor, Filipe 💗</p>
+
+  </div>
+
+  <div class="conteudo tab-content active" id="mensagem3">
+    <h1 class="titulo-brilhante">⏳ Contando os dias para te ver de novo ⏳</h1>
+    <p>Meu amor,</p>
+    <p>Saudade é uma palavra pequena para o que sinto quando você não está aqui. É como se o tempo ficasse mais lento, como se cada segundo longe de você fosse um convite para lembrar de tudo o que vivemos, de tudo o que ainda vamos viver. Sinto falta do teu abraço, do teu cheiro, do teu sorriso que ilumina até os meus dias mais nublados.</p>
+    <p>Às vezes, fecho os olhos e quase posso sentir tua mão na minha, tua voz sussurrando promessas de amor eterno, teu olhar dizendo sem palavras que sou teu porto seguro. É nesses momentos que percebo: amar você é o que me faz inteiro, é o que dá sentido a cada batida do meu coração.</p>
+    <p>Te amo com uma intensidade que não cabe em versos, com uma verdade que não se apaga nem com a distância, nem com o tempo. Te amo porque você é minha paz, minha alegria, meu sonho realizado. Porque cada lembrança tua é um poema, cada plano nosso é um futuro que eu quero viver mil vezes ao teu lado.</p>
+    <p>Conto os dias, as horas, os minutos para te reencontrar. Em breve, estarei aí de novo, para te envolver num abraço apertado, para te olhar nos olhos e dizer — de novo e sempre — que você é o amor da minha vida. Até lá, guardo cada saudade como quem coleciona estrelas, esperando o momento de brilhar ao teu lado outra vez.</p>
+    <p>Mas acima de tudo, quero que você saiba o quanto é única, incrível, insubstituível. Você é a pessoa mais importante da minha vida, meu maior presente, minha inspiração diária. Eu te amo em todos os dias, em todos os humores, em todas as fases. Quero estar ao teu lado nos sorrisos e nas lágrimas, nos dias de sol e nas tempestades, porque amar você é escolher viver cada momento — bom ou difícil — juntos. Quero crescer contigo, aprender contigo, construir uma história que seja só nossa, feita de cumplicidade, respeito e sonhos compartilhados. Quero viver para sempre ao teu lado, te amando cada vez mais, sendo teu porto seguro e tua alegria, porque você merece o mundo e eu quero ser o teu mundo também.</p>
+    <p>Que a distância só sirva para aumentar o que já é imenso: meu amor por você. E que, quando eu chegar, cada saudade vire festa, cada silêncio vire riso, cada sonho vire realidade.</p>
+    <p class="assinatura">Com todo meu amor, saudade e poesia, — Filipe 💗</p>
   </div>
 
 
@@ -58,6 +68,14 @@
 
 
   <script src="script.js"></script>
+  <script>
+    // Garante que a aba 3 esteja ativa ao abrir a página
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof showTab === 'function') {
+        showTab(2);
+      }
+    });
+  </script>
 
 </body>
 </html>
