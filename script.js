@@ -35,21 +35,26 @@ function criarCoracao() {
 setInterval(criarCoracao, 800);
 // --- Botão de play/pause da música ---
 document.addEventListener('DOMContentLoaded', function() {
-  const musica = document.getElementById('musica-fundo');
-  const btn = document.getElementById('btn-musica');
-  if (musica && btn) {
+  const btn = document.getElementById('btn-video');
+  if (btn) {
     btn.onclick = function() {
-      if (musica.paused) {
-        musica.play();
-        btn.innerHTML = '⏸️ Pausar música';
-      } else {
-        musica.pause();
-        btn.innerHTML = '▶️ Tocar música';
+      const video = document.getElementById('video-amor');
+      if (video) {
+        if (video.paused) {
+          video.play().catch(() => {});
+          btn.innerHTML = '⏸️ Pausar vídeo';
+        } else {
+          video.pause();
+          btn.innerHTML = '▶️ Tocar vídeo';
+        }
       }
     };
     // Atualizar botão se usuário pausar/play por outros meios
-    musica.addEventListener('play', () => { btn.innerHTML = '⏸️ Pausar música'; });
-    musica.addEventListener('pause', () => { btn.innerHTML = '▶️ Tocar música'; });
+    const video = document.getElementById('video-amor');
+    if (video) {
+      video.addEventListener('play', () => { btn.innerHTML = '⏸️ Pausar vídeo'; });
+      video.addEventListener('pause', () => { btn.innerHTML = '▶️ Tocar vídeo'; });
+    }
   }
 });
 // --- Música de fundo: garantir autoplay após interação ---
@@ -297,6 +302,9 @@ function mostrarMensagem() {
 
 // 🖼️ Carrossel de imagens
 const imagens = [
+  'fotos/IMG_20250824_111959.jpg',
+  'fotos/Screenshot_20250823-115541~2.png',
+  'fotos/coracao.png',
   'fotos/amor.jpg', 'fotos/amor1.jpg', 'fotos/amor2.jpg', 'fotos/amor3.jpg', 'fotos/amor4.jpg', 'fotos/amor5.jpg',
   'fotos/amor6.jpg', 'fotos/amor7.jpg', 'fotos/amor8.jpg', 'fotos/amor9.jpg', 'fotos/amor10.jpg', 'fotos/amor11.jpg',
   'fotos/amor12.jpg', 'fotos/amor13.jpg', 'fotos/amor14.jpg', 'fotos/amor15.jpg'
@@ -313,3 +321,33 @@ const hoje = new Date();
 const casamento = new Date('2025-12-02T00:00:00');
 const dias = Math.ceil((casamento - hoje) / (1000 * 60 * 60 * 24));
 document.getElementById('contador').innerText = dias;
+
+// Frases de amor fixas
+const frasesAmorFixas = [
+  "Te amo com todas as cores do arco-íris!",
+  "Você é minha saudade boa.",
+  "Meu coração bate mais forte por você.",
+  "Seu sorriso ilumina minha vida.",
+  "Cada dia contigo é um presente.",
+  "Nosso amor é alegria, paixão e carinho!",
+  "Quero você para sempre comigo.",
+  "Você é meu sonho realizado.",
+  "Com você, tudo é mais bonito!",
+  "Meu amor por você é infinito!"
+];
+
+function mostrarFraseAmorAleatoria() {
+  const frase = document.createElement('div');
+  frase.className = 'frase-amor';
+  frase.innerText = frasesAmorFixas[Math.floor(Math.random() * frasesAmorFixas.length)];
+  frase.style.left = Math.random() * 80 + 10 + 'vw';
+  frase.style.top = Math.random() * 80 + 10 + 'vh';
+  frase.style.display = 'block';
+  document.body.appendChild(frase);
+  setTimeout(() => frase.remove(), 3500);
+}
+
+// Iniciar a mostrar frases de amor ao carregar
+document.addEventListener('DOMContentLoaded', function() {
+  setInterval(mostrarFraseAmorAleatoria, 5000);
+});

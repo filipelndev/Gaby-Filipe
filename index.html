@@ -7,8 +7,66 @@
   <title>Nosso Amor</title>
 
   <link rel="stylesheet" href="style.css">
- <audio id="musica-fundo" src="musicas/Ed_Sheeran_-_Photograph_(BornMP3.com).mp3" autoplay loop></audio>
- <button id="btn-musica" style="position:fixed;top:15px;right:15px;z-index:1000;background:#fff0f5;border:2px solid #ff69b4;color:#c71585;border-radius:50px;padding:8px 18px;font-size:1.1em;cursor:pointer;box-shadow:0 2px 8px #ffd6e6;">⏸️ Pausar música</button>
+  <style>
+    .arcoiris-borda {
+      pointer-events: none;
+      position: fixed;
+      z-index: 99999;
+    }
+    .arcoiris-top {
+      top: 0; left: 0; width: 100vw; height: 16px;
+      background: linear-gradient(90deg, #ff69b4, #ffb347, #ffff66, #66ff66, #66b3ff, #b366ff, #ff66b3);
+      animation: arcoirisAnim 4s linear infinite alternate;
+      box-shadow: 0 2px 16px #ffb6c1;
+    }
+    .arcoiris-bottom {
+      bottom: 0; left: 0; width: 100vw; height: 16px;
+      background: linear-gradient(90deg, #ff69b4, #ffb347, #ffff66, #66ff66, #66b3ff, #b366ff, #ff66b3);
+      animation: arcoirisAnim 4s linear infinite alternate;
+      box-shadow: 0 -2px 16px #ffb6c1;
+    }
+    .arcoiris-left {
+      top: 0; left: 0; width: 16px; height: 100vh;
+      background: linear-gradient(180deg, #ff69b4, #ffb347, #ffff66, #66ff66, #66b3ff, #b366ff, #ff66b3);
+      animation: arcoirisAnim 4s linear infinite alternate;
+      box-shadow: 2px 0 16px #ffb6c1;
+    }
+    .arcoiris-right {
+      top: 0; right: 0; width: 16px; height: 100vh;
+      background: linear-gradient(180deg, #ff69b4, #ffb347, #ffff66, #66ff66, #66b3ff, #b366ff, #ff66b3);
+      animation: arcoirisAnim 4s linear infinite alternate;
+      box-shadow: -2px 0 16px #ffb6c1;
+    }
+    @keyframes arcoirisAnim {
+      0% { filter: brightness(1) saturate(1); }
+      100% { filter: brightness(1.2) saturate(1.5); }
+    }
+    .frase-amor {
+      position: fixed;
+      left: 50%;
+      top: 40px;
+      transform: translateX(-50%);
+      font-size: 1.3em;
+      color: #ff1493;
+      background: #fff0f5cc;
+      border-radius: 18px;
+      padding: 8px 22px;
+      box-shadow: 0 2px 12px #ffd6e6;
+      z-index: 99998;
+      animation: fraseAnim 1.8s ease-in-out;
+    }
+    @keyframes fraseAnim {
+      0% { opacity: 0; transform: translateX(-50%) scale(0.8); }
+      60% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+      100% { opacity: 1; transform: translateX(-50%) scale(1); }
+    }
+  </style>
+ <button id="btn-video" style="position:fixed;top:15px;right:15px;z-index:1000;background:#fff0f5;border:2px solid #ff69b4;color:#c71585;border-radius:50px;padding:8px 18px;font-size:1.1em;cursor:pointer;box-shadow:0 2px 8px #ffd6e6;">⏸️ Pausar vídeo</button>
+  <div class="arcoiris-borda arcoiris-top"></div>
+  <div class="arcoiris-borda arcoiris-bottom"></div>
+  <div class="arcoiris-borda arcoiris-left"></div>
+  <div class="arcoiris-borda arcoiris-right"></div>
+  <div id="frase-amor" class="frase-amor" style="display:none;"></div>
   <div class="tabs">
     <button class="tab-btn" onclick="showTab(0)">1 mês de namoro</button>
     <button class="tab-btn" onclick="showTab(1)">Aniversário da Gaby 🎂</button>
@@ -49,13 +107,17 @@
   </div>
 
   <div class="conteudo tab-content active" id="mensagem3">
-<h1 class="titulo-brilhante">💍 Unidos por Deus, guiados pelo amor 💍</h1>
-  <p>Meu amor,</p>
-  <p>Desde o primeiro instante, eu soube que havia algo divino em nós. Não foi acaso, não foi sorte — foi Deus. Ele nos uniu com propósito, com cuidado, com amor. E a cada dia que passa, esse propósito se fortalece, se revela, se confirma em cada oração que fazemos, em cada sonho que compartilhamos, em cada passo que damos lado a lado.</p>
-  <p>Você é minha parceira de vida, minha companheira de fé, minha aliada na caminhada que escolhemos trilhar com Deus no centro. Nossas orações têm sido o alicerce da nossa história, e eu sinto que o céu sorri pra nós quando dobramos os joelhos juntos, confiando, esperando, agradecendo. É uma conexão que vai além do toque, além das palavras — é espiritual, eterna, sagrada.</p>
-  <p>Eu olho pra frente e vejo você no altar, radiante, linda, com o coração cheio de paz. E eu ali, emocionado, pronto para te escolher mais uma vez — dessa vez diante de todos, diante de Deus, diante da vida. Não vejo a hora de viver contigo todos os dias, de acordar ao teu lado, de construir nossa casa, nossa família, nossa história com raízes profundas e frutos abundantes.</p>
-  <p>Você é minha resposta, meu presente, meu futuro. E eu sigo aqui, firme, apaixonado, esperando o dia em que o “para sempre” começará oficialmente. Que Deus continue nos guiando, nos fortalecendo, nos preparando para tudo o que Ele tem reservado. Porque com você, tudo faz sentido. Com você, tudo é mais leve. Com você, tudo é possível.</p>
-  <p class="assinatura">Com fé, amor e toda a minha entrega, — Filipe 💗</p>
+<video id="video-amor" controls autoplay style="width:100%;max-width:400px;display:block;margin:0 auto 20px auto;border-radius:18px;box-shadow:0 2px 16px #ffb6c1;">
+  <source src="fotos/VID-20250824-WA0037.mp4" type="video/mp4">
+  Seu navegador não suporta vídeo.
+</video>
+<h1 class="titulo-brilhante">💖 Nosso amor é luz, cor e saudade 💖</h1>
+<p>Meu amor,</p>
+<p>Hoje, cada batida do meu coração é um grito de paixão, alegria e saudade por você. Sinto teu cheiro em cada vento, tua risada em cada raio de sol, teu carinho em cada detalhe do meu dia. O tempo passa, mas a vontade de te abraçar só aumenta, e a saudade vira poesia dentro de mim.</p>
+<p>Você é o colorido dos meus dias, o abraço que me acalma, o sorriso que me faz acreditar que o mundo é mais bonito quando estamos juntos. Te amo com uma força que não cabe em palavras, com uma alegria que transborda, com um carinho que nunca se apaga.</p>
+<p>Nosso amor é feito de lembranças doces, de sonhos compartilhados, de planos para um futuro cheio de luz. Sinto falta de você até quando estamos juntos, porque quero sempre mais: mais beijos, mais risos, mais momentos, mais nós.</p>
+<p>Que Deus abençoe cada passo nosso, cada saudade, cada reencontro. Que a paixão nunca se apague, que a alegria seja nossa rotina, que o carinho seja eterno. Você é minha saudade boa, meu amor sem medida, minha alegria diária.</p>
+<p class="assinatura">Com todo o meu amor, saudade e carinho, — Filipe 💗</p>
 </div>
   <div class="carrossel">
     <img id="slide" src="fotos/amor1.jpg" alt="Foto de nós dois">
