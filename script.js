@@ -351,3 +351,21 @@ function mostrarFraseAmorAleatoria() {
 document.addEventListener('DOMContentLoaded', function() {
   setInterval(mostrarFraseAmorAleatoria, 5000);
 });
+
+document.getElementById("btn-amor").addEventListener("click", () => {
+  const msg = document.getElementById("mensagem-amor");
+  msg.style.display = "block";
+  msg.style.animation = "none";
+  void msg.offsetWidth;
+  msg.style.animation = "surge 0.8s ease-in-out";
+
+  setTimeout(() => {
+    msg.style.display = "none";
+  }, 3500);
+
+  for (let i = 0; i < 30; i++) {
+    setTimeout(() => {
+      criarCoracao(); // já definida no seu JS
+    }, i * 100);
+  }
+});

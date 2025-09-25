@@ -57,7 +57,7 @@
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 body {
-  background-color: #fff0f5;
+  background-color: #8204bd;
   font-family: 'Segoe UI', sans-serif;
   text-align: center;
   padding: 50px;
@@ -240,4 +240,41 @@ body.revelado {
 @keyframes andaFormiguinha {
   0% { left: -50px; }
   100% { left: 100vw; }
+}
+.botao-amor {
+  background-color: #ff69b4;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.3em;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s ease;
+  box-shadow: 0 4px 12px #ffb6c1;
+  z-index: 1000;
+}
+.botao-amor:hover {
+  transform: scale(1.1);
+  background-color: #ff1493;
+}
+
+.mensagem-amor {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff0f5cc;
+  color: #ff1493;
+  font-size: 1.5em;
+  padding: 15px 30px;
+  border-radius: 25px;
+  text-align: center;
+  z-index: 100001;
+  box-shadow: 0 4px 20px #ffb6c1;
+  animation: surge 0.8s ease-in-out forwards;
+}
+@keyframes surge {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  60% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 }
