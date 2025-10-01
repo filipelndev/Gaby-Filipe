@@ -122,15 +122,156 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 // Função para alternar abas
 function showTab(idx) {
+  // Abraço virtual: sempre esconder ao trocar de aba
+  let abracoVirtual = document.getElementById('abraco-virtual');
+  if (abracoVirtual) abracoVirtual.style.display = 'none';
+  // Botão de abraço virtual na quarta aba
+  const btnAbraco = document.getElementById('btn-abraco');
+  // reutiliza a variável já declarada acima
+  if (btnAbraco && abracoVirtual) {
+    btnAbraco.onclick = function() {
+      abracoVirtual.style.display = 'block';
+      abracoVirtual.style.animation = 'none';
+      void abracoVirtual.offsetWidth;
+      abracoVirtual.style.animation = 'abracoSurge 1s cubic-bezier(.68,-0.55,.27,1.55)';
+      setTimeout(() => {
+        abracoVirtual.style.display = 'none';
+      }, 4000);
+    };
+  }
+  // Efeito poético na quarta aba
+  if (idx === 3) {
+    const poema = `
+      Quando a saudade aperta, fecho os olhos e te sinto aqui.
+      <br><br>
+      Você é o verso mais bonito do meu dia, a rima perfeita do meu sorriso, o abraço que acalma até o meu silêncio.
+      <br><br>
+      Queria te ter em cada instante, dividir cada detalhe, te mostrar o quanto você é incrível, amável, única.
+      <br><br>
+      Até meu jeito implicante é só amor querendo te proteger, te mimar, te ter sempre por perto.
+      <br><br>
+      Você é minha poesia viva, minha saudade boa, meu sonho acordado.
+    `;
+    const el = document.getElementById('poema-quarta');
+    const assinatura = document.getElementById('assinatura-poetica');
+    if (el) {
+      el.innerHTML = '';
+      let i = 0;
+      function digitar() {
+        if (i < poema.length) {
+          if (poema[i] === '<') {
+            // Pular tags HTML
+            const close = poema.indexOf('>', i);
+            el.innerHTML += poema.slice(i, close + 1);
+            i = close + 1;
+          } else {
+            el.innerHTML += poema[i];
+            i++;
+          }
+          setTimeout(digitar, 22);
+        } else if (assinatura) {
+          assinatura.style.opacity = 1;
+        }
+      }
+      assinatura.style.opacity = 0;
+      digitar();
+    }
+    // Corações subindo
+    for (let j = 0; j < 18; j++) {
+      setTimeout(() => {
+        const coracao = document.createElement('div');
+        coracao.innerHTML = '💗';
+        coracao.style.position = 'fixed';
+        coracao.style.left = (10 + Math.random() * 80) + 'vw';
+        coracao.style.bottom = '-40px';
+        coracao.style.fontSize = (36 + Math.random() * 32) + 'px';
+        coracao.style.opacity = 0.7 + Math.random() * 0.3;
+        coracao.style.transition = 'bottom 3.5s linear, opacity 3.5s';
+        coracao.style.zIndex = 9999;
+        document.body.appendChild(coracao);
+        setTimeout(() => {
+          coracao.style.bottom = '110vh';
+          coracao.style.opacity = 0;
+        }, 30);
+        setTimeout(() => coracao.remove(), 3700);
+      }, j * 180);
+    }
+  }
   const btns = document.querySelectorAll('.tab-btn');
   const tabs = document.querySelectorAll('.tab-content');
   btns.forEach((b, i) => b.classList.toggle('active', i === idx));
-  tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+  tabs.forEach((t, i) => {
+    if (i === idx) {
+      t.classList.add('active');
+      t.style.display = '';
+    } else {
+      t.classList.remove('active');
+      t.style.display = 'none';
+    }
+  });
+
+  // Controle de vídeo e música na quarta aba
+  const video = document.getElementById('video-amor');
+  const musica = document.getElementById('musica-quarta');
+  if (idx === 3) {
+    // Aba 4: só música
+    if (video) {
+      video.pause();
+      video.style.display = 'none';
+    }
+    if (musica) {
+      musica.currentTime = 0;
+      musica.play().catch(() => {
+        const playMusic = () => {
+          musica.play();
+          document.removeEventListener('click', playMusic);
+          document.removeEventListener('touchstart', playMusic);
+        };
+        document.addEventListener('click', playMusic);
+        document.addEventListener('touchstart', playMusic);
+      });
+    }
+  } else {
+    // Outras abas: só vídeo
+    if (musica) musica.pause();
+    if (video) {
+      video.style.display = '';
+      // Tentar autoplay do vídeo ao voltar para as abas 1, 2 ou 3
+      video.play().catch(() => {
+        const playVideo = () => {
+          video.play();
+          document.removeEventListener('click', playVideo);
+          document.removeEventListener('touchstart', playVideo);
+        };
+        document.addEventListener('click', playVideo);
+        document.addEventListener('touchstart', playVideo);
+      });
+    }
+  }
 }
 
 // Sempre abrir na segunda aba
 document.addEventListener('DOMContentLoaded', function() {
   showTab(1);
+
+  // Tentar autoplay do vídeo com som ao abrir o site
+  const video = document.getElementById('video-amor');
+  if (video) {
+    video.muted = false;
+    video.play().then(() => {
+      video.muted = false;
+    }).catch(() => {
+      // Se não tocar, aguardar interação do usuário para ativar som e play
+      const playVideoWithSound = () => {
+        video.muted = false;
+        video.play();
+        document.removeEventListener('click', playVideoWithSound);
+        document.removeEventListener('touchstart', playVideoWithSound);
+      };
+      document.addEventListener('click', playVideoWithSound);
+      document.addEventListener('touchstart', playVideoWithSound);
+    });
+  }
 });
 
 // Atualizar contador nas abas

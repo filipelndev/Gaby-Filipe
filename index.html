@@ -3,11 +3,145 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <audio id="musica-quarta" src="musicas/cancao.mp3" preload="auto" style="display:none;"></audio>
   <meta charset="UTF-8">
   <title>Nosso Amor</title>
 
   <link rel="stylesheet" href="style.css">
   <style>
+    .botao-abraco {
+      display: block;
+      margin: 32px auto 0 auto;
+      background: linear-gradient(90deg, #ffb347, #ff69b4, #66b3ff);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 38px;
+      font-size: 1.25em;
+      font-weight: bold;
+      box-shadow: 0 2px 12px #ffb347cc;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .botao-abraco:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 24px #ff69b4cc;
+      background: linear-gradient(90deg, #66b3ff, #ffb347, #ff69b4);
+    }
+    .abraco-virtual {
+      display: none;
+      margin: 32px auto 0 auto;
+      max-width: 500px;
+      background: #23232b;
+      color: #fff;
+      border-radius: 22px;
+      padding: 32px 28px 38px 28px;
+      font-size: 1.5em;
+      text-align: center;
+      box-shadow: 0 2px 24px #ffb34755;
+      position: relative;
+      animation: abracoSurge 1s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    @keyframes abracoSurge {
+      0% { opacity: 0; transform: scale(0.7); }
+      60% { opacity: 1; transform: scale(1.08); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .emoji-abraco {
+      font-size: 2.5em;
+      display: block;
+      margin-bottom: 18px;
+    }
+    .tabs {
+      background: #23232b;
+      border-radius: 18px;
+      padding: 10px 0 6px 0;
+      margin: 32px auto 18px auto;
+      max-width: 700px;
+      box-shadow: 0 2px 16px #111a;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .tab-btn {
+      background: #23232b;
+      color: #fff;
+      border: none;
+      border-radius: 12px 12px 0 0;
+      padding: 10px 28px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      margin-bottom: -2px;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: #353545;
+      color: #ffb347;
+      box-shadow: 0 2px 12px #ffb34733;
+    }
+    .poema-quarta {
+      font-size: 2.1em;
+      line-height: 1.3;
+      color: #fff;
+      text-align: center;
+      max-width: 900px;
+      margin: 60px auto 30px auto;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      letter-spacing: 1.2px;
+      text-shadow: 0 2px 16px #ff69b4cc, 0 1px 0 #222;
+      min-height: 320px;
+      transition: font-size 0.3s;
+    }
+    .assinatura-poetica {
+      font-size: 1.3em;
+      color: #ffb347;
+      margin-top: 32px;
+      font-family: 'Dancing Script', cursive, 'Comic Sans MS', cursive;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    .botao-amor {
+      display: block;
+      margin: 24px auto 16px auto;
+      background: linear-gradient(90deg, #ff69b4, #ffb347, #66b3ff);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 36px;
+      font-size: 1.2em;
+      font-weight: bold;
+      box-shadow: 0 2px 12px #ff69b4cc;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .botao-amor:hover {
+      transform: scale(1.07);
+      box-shadow: 0 4px 24px #ffb347cc;
+      background: linear-gradient(90deg, #ffb347, #ff69b4, #66b3ff);
+    }
+    .mensagem-amor {
+      background: #222c;
+      color: #fff;
+      border-radius: 18px;
+      padding: 18px 28px;
+      margin: 18px auto 0 auto;
+      max-width: 420px;
+      font-size: 1.1em;
+      text-align: center;
+      box-shadow: 0 2px 12px #ff69b4cc;
+      animation: surge 0.8s ease-in-out;
+    }
+    @keyframes surge {
+      0% { opacity: 0; transform: scale(0.8); }
+      60% { opacity: 1; transform: scale(1.08); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    body {
+      background: #111 !important;
+      color: #fff !important;
+    }
     .arcoiris-borda {
       pointer-events: none;
       position: fixed;
@@ -48,7 +182,7 @@
       transform: translateX(-50%);
       font-size: 1.3em;
       color: #ff1493;
-      background: #fff0f5cc;
+      background: #222c;
       border-radius: 18px;
       padding: 8px 22px;
       box-shadow: 0 2px 12px #ffd6e6;
@@ -68,9 +202,10 @@
   <div class="arcoiris-borda arcoiris-right"></div>
   <div id="frase-amor" class="frase-amor" style="display:none;"></div>
   <div class="tabs">
-    <button class="tab-btn" onclick="showTab(0)">1 mês de namoro</button>
-    <button class="tab-btn" onclick="showTab(1)">Aniversário da Gaby 🎂</button>
-    <button class="tab-btn active" onclick="showTab(2)">Para sempre com você 💖</button>
+  <button class="tab-btn" onclick="showTab(0)">1 mês de namoro</button>
+  <button class="tab-btn" onclick="showTab(1)">Aniversário da Gaby 🎂</button>
+  <button class="tab-btn active" onclick="showTab(2)">3 meses de namoro 💖</button>
+  <button class="tab-btn" onclick="showTab(3)">Surpresa especial ✨</button>
   </div>
 
   <div class="conteudo tab-content" id="mensagem1">
@@ -107,49 +242,37 @@
   </div>
 
   <div class="conteudo tab-content active" id="mensagem3">
-<video id="video-amor" controls autoplay loop style="width:100%;max-width:400px;display:block;margin:0 auto 20px auto;border-radius:18px;box-shadow:0 2px 16px #ffb6c1;">
-  <source src="fotos/VID-20250824-WA0037.mp4" type="video/mp4">
-  Seu navegador não suporta vídeo.
-</video>
-<button id="btn-amor" class="botao-amor">💖 Preciso de você</button>
-<div id="mensagem-amor" class="mensagem-amor" style="display:none;">
-  Agora mesmo, só queria estar com você.
-</div>
+  <video id="video-amor" controls autoplay loop style="width:100%;max-width:400px;display:block;margin:0 auto 20px auto;border-radius:18px;box-shadow:0 2px 16px #ffb6c1;">
+      <source src="fotos/VID-20250824-WA0037.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo.
+    </video>
+    <button id="btn-amor" class="botao-amor">💖 Preciso de você</button>
+    <div id="mensagem-amor" class="mensagem-amor" style="display:none;">
+      Amor, cada despedida é um pedacinho de mim sentindo falta de você. Meu jeito implicante é só saudade disfarçada de carinho. Você é incrível, amável, e tudo o que eu mais quero é estar ao seu lado em todos os momentos. Te amo mais do que consigo explicar!
+    </div>
+    <h1 class="titulo-brilhante">💖 3 meses de nós dois 💖</h1>
+    <p>Meu amor,</p>
+    <p>
+      Hoje celebramos 3 meses de uma história que só faz crescer. Cada despedida dói, porque meu coração só quer estar com você o tempo todo. Sinto sua falta até quando você ainda está por perto, porque o meu amor é tão grande que nunca é suficiente te ter só um pouco.
+    </p>
+    <p>
+      Você é incrível, amável, doce, forte, e até meu jeito implicante é só porque te amo demais. Quero dividir cada momento do meu dia com você, rir das nossas bobeiras, sonhar junto, construir memórias e nunca deixar de te admirar.
+    </p>
+    <p>
+      Obrigado por ser minha paz, minha alegria, minha saudade boa. Que venham muitos meses, anos e uma vida inteira ao seu lado. Você é meu presente, minha escolha, meu amor para sempre.
+    </p>
+    <p class="assinatura">Com todo o meu amor, saudade e carinho, — Filipe 💗</p>
+  </div>
 
-<h1 class="titulo-brilhante">💖 Você é tudo o que sonhei 💖</h1>
-
-<p>Meu amor,</p>
-
-<p>
-Antes mesmo de me despedir, já sinto a falta que você faz. É como se meu coração já
-chorasse de saudade só de imaginar o instante em que não estarei ao seu lado. 
-Você é o abraço que espero todos os dias, o sorriso que me dá forças e a paz que eu 
-sempre busquei sem saber onde encontrar.
-</p>
-
-<p>
-Ter você é como finalmente acordar de um sonho e perceber que ele é real. 
-Você é o que faltava em mim, o pedaço que sempre procurei, a certeza que 
-transformou a minha vida em algo completo. Cada dia ao seu lado é um presente, 
-e cada instante longe de você é uma eternidade.
-</p>
-
-<p>
-Eu não quero apenas momentos, quero todos os dias. Quero suas manhãs, suas noites, 
-seus silêncios e suas risadas. Quero sua presença como minha rotina, sua voz como 
-minha melodia, seu amor como minha história. Você é tudo o que sonhei e tudo 
-o que quero viver.
-</p>
-
-<p>
-Que Deus abençoe esse amor que é puro, verdadeiro e eterno. 
-Que nunca falte paixão, cumplicidade e o desejo de estarmos sempre juntos. 
-Você é minha saudade antes da despedida, meu futuro em cada plano, 
-meu sempre e meu para sempre.
-</p>
-
-<p class="assinatura">Com todo o meu amor, saudade e entrega, — Filipe 💗</p>
-</div>
+  <div class="conteudo tab-content" id="mensagem4" style="display:none;">
+    <button id="btn-abraco" class="botao-abraco">🤗 Receber um abraço virtual</button>
+    <div id="abraco-virtual" class="abraco-virtual">
+      <span class="emoji-abraco">🤗💗</span>
+      Sinta-se abraçada bem forte agora! Feche os olhos, imagine meus braços ao seu redor e todo o meu amor te envolvendo. Você nunca está sozinha, sempre tem meu carinho pertinho de você.
+    </div>
+    <div id="poema-quarta" class="poema-quarta"></div>
+    <div id="assinatura-poetica" class="assinatura-poetica">Com todo o meu amor, Filipe 💗</div>
+  </div>
   <div class="carrossel">
     <img id="slide" src="fotos/amor1.jpg" alt="Foto de nós dois">
     <p class="legenda">“Cada imagem é um verso do poema que escrevemos juntos.”</p>
